@@ -1,5 +1,4 @@
-import  transporter  from "./nodeMailerSetup.js"; 
-
+import transporter from "./nodeMailerSetup.js";
 
 // send new account email
 export const sendNewAccountEmail = async (to: string, name: string) => {
@@ -32,7 +31,7 @@ export const sendNewAccountEmail = async (to: string, name: string) => {
           &copy; 2026 App Name. All rights reserved.
         </p>
       </div>
-    `,
+    `
   };
 
   try {
@@ -44,7 +43,6 @@ export const sendNewAccountEmail = async (to: string, name: string) => {
     return false;
   }
 };
-
 
 // login email notification
 export const sendLoginSuccessEmail = async (to: string, name: string) => {
@@ -60,15 +58,15 @@ export const sendLoginSuccessEmail = async (to: string, name: string) => {
         <p>If this was you, no action is needed. You can continue using your account safely.</p>
 
         <p>If you did NOT log in, we recommend changing your password immediately:</p>
-       
+
 
         <hr />
         <p style="font-size:12px; color:#777;">
-          This is an automated message from <strong>App Name</strong>.  
+          This is an automated message from <strong>App Name</strong>.
           &copy; 2026 App Name. All rights reserved.
         </p>
       </div>
-    `,
+    `
   };
 
   try {
@@ -81,8 +79,11 @@ export const sendLoginSuccessEmail = async (to: string, name: string) => {
   }
 };
 
-
-export const sendTemporaryPasswordEmail = async (to: string, name: string, tempPassword: string) => {
+export const sendTemporaryPasswordEmail = async (
+  to: string,
+  name: string,
+  tempPassword: string
+) => {
   const mailOptions = {
     from: `"App Name" <${process.env.EMAIL_USER}>`,
     to,
@@ -117,7 +118,7 @@ export const sendTemporaryPasswordEmail = async (to: string, name: string, tempP
           &copy; 2026 App Name. All rights reserved.
         </p>
       </div>
-    `,
+    `
   };
 
   try {

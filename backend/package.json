@@ -3,6 +3,7 @@
   "scripts": {
     "dev": "tsx watch src/server.ts",
     "build": "tsc",
+    "start": "node dist/src/server.js",
     "deploy": "npm run build && npm run migrate",
     "generate": "tsx node_modules/drizzle-kit/bin.cjs generate",
     "migrate": "tsx node_modules/drizzle-kit/bin.cjs migrate"
