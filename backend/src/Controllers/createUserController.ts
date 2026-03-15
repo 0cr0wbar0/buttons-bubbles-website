@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import { Request, Response } from "express";
-import { findUserByEmail, createUser } from "../Models/UserModel.js";
+import { findUserByEmail, createUser } from "../Models/userModel.js";
+import {sendNewAccountEmail} from "../Utils/email.js";
 
 export const createAccount = async (req: Request, res: Response) => {
   const { name, email, password, dob, address } = req.body;
@@ -28,6 +29,9 @@ export const createAccount = async (req: Request, res: Response) => {
       dob,
       address,
     });
+
+    // Send email
+    await sendNewAccountEmail(email, name);
 
     return res.status(201).json({
       newUser,
