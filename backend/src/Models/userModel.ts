@@ -8,7 +8,7 @@ export const findUserByEmail = async (email: string) => {
   return db.select().from(users).where(eq(users.email, email));
 };
 
-
+// Find a user email by ID
 export const findUserByEmailByID = async (id: number) => {
  return  db.select()
           .from(users)
@@ -25,3 +25,9 @@ export const createUser = async (user: {
 }) => {
   return db.insert(users).values(user).returning();
 };
+
+
+//update password
+export const updateUserPassword = async (email: string, newPassword: string) => {
+  return db.update(users).set({ password: newPassword }).where(eq(users.email, email)).returning();
+}
