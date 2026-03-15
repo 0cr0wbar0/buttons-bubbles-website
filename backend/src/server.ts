@@ -5,7 +5,7 @@ import passport from "./Config/passport.js";
 
 
 // Import routes
-import userRoutes from "./Route/createUserRoutes.js";
+import userRoutes from "./Route/userRoutes.js";
 import loginRoutes from "./Route/loginRoutes.js";
 
 const app = express();

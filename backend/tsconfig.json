@@ -7,6 +7,6 @@
     "moduleResolution": "NodeNext",
     "baseUrl": "."
   },
-  "include": ["**/*.ts"],
+  "include": ["**/*.ts", "src/Models/userModel.ts"],
   "exclude": ["dist"]
 }
