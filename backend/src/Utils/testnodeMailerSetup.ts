@@ -1,4 +1,4 @@
-import transporter  from "./nodeMailerSetup.js";
+import transporter from "./nodeMailerSetup.js";
 
 (async () => {
   try {
