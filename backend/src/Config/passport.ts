@@ -1,5 +1,5 @@
 import passport from 'passport';
-import { findUserByEmail , findUserByEmailByID} from 'src/Models/userModel.js';
+import { findUserByEmail , findUserByEmailByID} from '../Models/userModel.js';
 import bcrypt from 'bcrypt'
 import { Strategy as LocalStrategy } from 'passport-local';
 
