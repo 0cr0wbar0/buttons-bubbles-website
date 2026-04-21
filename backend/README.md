@@ -51,7 +51,7 @@ POST login/
 ### Input values
 ```js
 {
-  username: string, 
+  email: string, 
   password: string
 }
 ```
