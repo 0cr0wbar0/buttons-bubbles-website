@@ -39,6 +39,9 @@ npm run dev
 
 ```env
 DATABASE_URL=postgresql://<username>:@<database url>:<port>/<database name>
+
+EMAIL_USER: "from gmail/yahoo/outlook"
+EMAIL_PASS: ""
 ```
 
 # API Guide
