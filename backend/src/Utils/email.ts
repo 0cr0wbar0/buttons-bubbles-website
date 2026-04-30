@@ -37,10 +37,10 @@ export const sendNewAccountEmail = async (to: string, name: string) => {
 
   try {
     const info = await transporter.sendMail(mailOptions);
-    console.log(`New account email sent to ${to}: ${info.messageId}`);
+  
     return true;
   } catch (error) {
-    console.error("Error sending new account email:", error);
+
     return false;
   }
 };
@@ -148,7 +148,7 @@ export const sendPasswordResetEmail = async (
   try {
     const info = await transporter.sendMail(mailOptions);
 
-    console.log("Reset email sent:", info.messageId);
+
 
     return true;
   } catch (error) {
