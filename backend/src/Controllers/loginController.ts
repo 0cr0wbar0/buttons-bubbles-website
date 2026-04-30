@@ -19,7 +19,7 @@ const loginController = (req: Request, res: Response, next: NextFunction) => {
         console.error("Email error:", error);
       }
 
-      // ✅ SEND RESPONSE ONLY AFTER LOGIN IS COMPLETE
+    
       return res.json({
         message: "Logged in successfully",
         user

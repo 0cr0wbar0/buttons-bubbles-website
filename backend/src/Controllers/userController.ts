@@ -4,6 +4,8 @@ import { Request, Response } from "express";
 import { findUserByEmail, createUser, updateUserPassword ,findUserByHashedToken, saveResetToken , findUserByResetToken, clearResetToken} from "../Models/userModel.js";
 import {sendNewAccountEmail, sendPasswordResetEmail} from "../Utils/email.js";
 
+
+// Create account controller
 export const createAccount = async (req: Request, res: Response) => {
   const { name, email, password, dob, address } = req.body;
 
@@ -50,7 +52,7 @@ export const createAccount = async (req: Request, res: Response) => {
   }
 };
 
-
+// Change password controller
 export const changePassword = async (req: Request, res: Response) => {
   const {  oldPassword, newPassword } = req.body;
 
@@ -92,7 +94,7 @@ const freshUser = freshUserArr[0];
 
 }
 
-
+// forgot password controller
 export const forgotPassword = async (req: Request, res: Response) => {
     const { email } = req.body;
 
@@ -146,8 +148,7 @@ export const forgotPassword = async (req: Request, res: Response) => {
 }
 
 
-
-
+//Reset password controller
 export const resetPassword = async (req: Request, res: Response) => {
   const { token, newPassword } = req.body;
 

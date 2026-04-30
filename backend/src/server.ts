@@ -20,7 +20,7 @@ app.use(session({
   saveUninitialized: false,
    cookie: {
     httpOnly: true,
-    secure: false, // MUST be false in localhost (HTTP)
+    secure: false, 
     sameSite: "lax"
   }
 }));
