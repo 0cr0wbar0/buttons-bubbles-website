@@ -2,6 +2,7 @@ import { db } from "../Database/db.js";
 import { users } from "../Database/schema.js";
 import { eq } from "drizzle-orm";
 
+
 // Find a user by email
 export const findUserByEmail = async (email: string) => {
   return db.select().from(users).where(eq(users.email, email));
@@ -9,8 +10,10 @@ export const findUserByEmail = async (email: string) => {
 
 // Find a user email by ID
 export const findUserByEmailByID = async (id: number) => {
-  return db.select().from(users).where(eq(users.id, id));
-};
+ return  db.select()
+          .from(users)
+          .where(eq(users.id, id));
+}
 
 // Insert a new user into the database
 export const createUser = async (user: {
@@ -23,14 +26,48 @@ export const createUser = async (user: {
   return db.insert(users).values(user).returning();
 };
 
+
 //update password
-export const updateUserPassword = async (
+export const updateUserPassword = async (email: string, newPassword: string) => {
+  return db.update(users).set({ password: newPassword }).where(eq(users.email, email)).returning();
+}
+
+// Save reset token and expiry to the database
+export const saveResetToken = async (
   email: string,
-  newPassword: string
+  hashedToken: string,
+  expiry: number
 ) => {
   return db
     .update(users)
-    .set({ password: newPassword })
+    .set({
+      reset_token: hashedToken,
+      reset_token_expiry: expiry,
+    })
     .where(eq(users.email, email))
     .returning();
+};
+
+
+
+
+// Clear reset token and expiry from the database
+export const clearResetToken = async (email: string) => {
+  return db
+    .update(users)
+    .set({
+      reset_token: null,
+      reset_token_expiry: null,
+    })
+    .where(eq(users.email, email))
+    .returning();
+};
+
+
+// Find a user by hashed reset token
+export const findUserByHashedToken = async (hashedToken: string) => {
+  return db
+    .select()
+    .from(users)
+    .where(eq(users.reset_token, hashedToken));
 };
