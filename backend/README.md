@@ -72,7 +72,7 @@ POST login/
 ```js
 // HTTP 400 Bad Request
 {
-  error
+  message: "User not found"
 }
 ```
 #### On failure to create user session:
@@ -118,7 +118,7 @@ POST register/
 ```js
 // HTTP 400 Bad Request
 {
-  error
+  error: "User already exists."
 }
 ```
 
