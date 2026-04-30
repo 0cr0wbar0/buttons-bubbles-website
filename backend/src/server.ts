@@ -18,6 +18,11 @@ app.use(session({
   secret: process.env.SESSION_SECRET  || "session_secret_here",
   resave: false,
   saveUninitialized: false,
+   cookie: {
+    httpOnly: true,
+    secure: false, // MUST be false in localhost (HTTP)
+    sameSite: "lax"
+  }
 }));
 
 // Initialize Passport
