@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import crypto from "crypto";
 import { Request, Response } from "express";
-import { findUserByEmail, createUser, updateUserPassword ,findUserByHashedToken, saveResetToken , findUserByResetToken, clearResetToken} from "../Models/userModel.js";
+import { findUserByEmail, createUser, updateUserPassword ,findUserByHashedToken, saveResetToken ,  clearResetToken} from "../Models/userModel.js";
 import {sendNewAccountEmail, sendPasswordResetEmail} from "../Utils/email.js";
 
 
@@ -132,7 +132,7 @@ export const forgotPassword = async (req: Request, res: Response) => {
     const resetLink = `https://${process.env.HOST}/reset-password?token=${token}`;
 
 
-    // Send email with the temporary password
+    // Send reset email
     await sendPasswordResetEmail(email, user.name, resetLink);
 
    return res.status(200).json({
@@ -159,7 +159,7 @@ export const resetPassword = async (req: Request, res: Response) => {
   }
 
   try {
-    // hash incoming token same way
+    // hash incoming token 
     const hashedToken = crypto
       .createHash("sha256")
       .update(token)
