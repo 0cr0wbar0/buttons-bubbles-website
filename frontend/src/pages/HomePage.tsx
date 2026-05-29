@@ -164,7 +164,7 @@ export default function HomePage() {
             Book a Session
           </Link>
           <Link
-            to="#"
+            to="/get-involved#donate"
             className="rounded-xl bg-navy px-8 py-3 font-bold text-gold hover:bg-navy-light transition-colors"
           >
             Donate
