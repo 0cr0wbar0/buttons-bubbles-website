@@ -54,6 +54,7 @@ const navLinks: NavLink[] = [
     label: "Get Involved",
     children: [
       { to: "/get-involved", hash: "booking", label: "Book a Session" },
+      { to: "/get-involved", hash: "donate", label: "Donate" },
       { to: "/get-involved", hash: "work-with-us", label: "Work With Us" },
       { to: "/get-involved", hash: "members", label: "Members" },
       { to: "/get-involved", hash: "professionals", label: "Professionals" },

@@ -3,6 +3,7 @@
 // TODO: wire up booking form, application buttons, and login to a backend.
 
 import { PageHero } from "@/components/PageHero";
+import { useState } from "react";
 
 const ROLES = [
   {
@@ -22,7 +23,11 @@ const ROLES = [
   },
 ];
 
+type PaymentMethod = "PayPal" | "Credit/Debit Card";
+
 export default function GetInvolvedPage() {
+  const [payMethod, setPayMethod] = useState<PaymentMethod>("PayPal");
+
   return (
     <div className="relative z-10">
       <PageHero
@@ -106,8 +111,108 @@ export default function GetInvolvedPage() {
         </div>
       </section>
 
+      {/* Donation form section */}
+      <section id="donate" className="bg-muted px-4 py-16 scroll-mt-24">
+        <div className="mx-auto max-w-3xl">
+          <header className="text-center mb-8">
+            <h2 className="text-3xl font-bold text-foreground">Donate</h2>
+            <p className="mt-2 text-muted-foreground">Contribute to our cause. Every bit helps!</p>
+          </header>
+          <form
+            className="space-y-6 rounded-2xl border border-border bg-card p-8"
+            onSubmit={(e) => e.preventDefault()}
+          >
+            <div>
+              <legend className="text-sm font-bold text-card-foreground">Payment Method</legend>
+              <div className="mt-2 space-y-2">
+                <label key="PayPal" className="flex items-center gap-2 text-sm text-foreground">
+                  <input
+                    type="radio"
+                    onChange={() => setPayMethod("PayPal")}
+                    name="payment-method"
+                    value="PayPal"
+                    className="accent-gold"
+                    defaultChecked={true}
+                  />
+                  PayPal
+                </label>
+                <label
+                  key="Credit/Debit Card"
+                  className="flex items-center gap-2 text-sm text-foreground"
+                >
+                  <input
+                    type="radio"
+                    onChange={() => setPayMethod("Credit/Debit Card")}
+                    name="payment-method"
+                    value="Credit/Debit Card"
+                    className="accent-gold"
+                  />
+                  Credit/Debit Card
+                </label>
+              </div>
+            </div>
+            {payMethod == ("Credit/Debit Card" as PaymentMethod) ? (
+              <div className="mt-2 space-y-2">
+                <label
+                  htmlFor="card-number"
+                  key="Card Number"
+                  className="block text-sm font-bold text-card-foreground"
+                >
+                  Card Number
+                </label>
+                <input
+                  className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground focus:ring-2 focus:ring-gold focus:border-gold"
+                  type="text"
+                  maxLength={16}
+                  name="card-number"
+                  placeholder="0000 0000 0000 0000"
+                />
+
+                <label
+                  htmlFor="expiry"
+                  key="Expiry"
+                  className="block text-sm font-bold text-card-foreground"
+                >
+                  Expiry
+                </label>
+                <input
+                  className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground focus:ring-2 focus:ring-gold focus:border-gold"
+                  type="text"
+                  maxLength={5}
+                  name="expiry"
+                  placeholder="00/00"
+                />
+
+                <label
+                  htmlFor="cvv"
+                  key="CVV"
+                  className="block text-sm font-bold text-card-foreground"
+                >
+                  CVV
+                </label>
+                <input
+                  className="mt-1 w-full rounded-xl border border-input bg-background px-4 py-3 text-foreground focus:ring-2 focus:ring-gold focus:border-gold"
+                  type="text"
+                  maxLength={3}
+                  name="cvv"
+                  placeholder="000"
+                />
+              </div>
+            ) : (
+              <div></div>
+            )}
+            <button
+              type="submit"
+              className="w-full rounded-xl bg-gold px-8 py-3 font-bold text-navy hover:bg-gold-light transition-colors"
+            >
+              Submit Donation
+            </button>
+          </form>
+        </div>
+      </section>
+
       {/* Work with us — roles section */}
-      <section id="work-with-us" className="bg-muted px-4 py-16 scroll-mt-24">
+      <section id="work-with-us" className="bg-background px-4 py-16 scroll-mt-24">
         <div className="mx-auto max-w-3xl">
           <header className="text-center mb-8">
             <h2 className="text-3xl font-bold text-foreground">Work With Us</h2>
@@ -136,7 +241,7 @@ export default function GetInvolvedPage() {
       </section>
 
       {/* Login forms for members and professionals */}
-      <section id="members" className="bg-background px-4 py-16 scroll-mt-24">
+      <section id="members" className="bg-muted px-4 py-16 scroll-mt-24">
         <div className="mx-auto grid gap-8 max-w-5xl md:grid-cols-2">
           {/* Member login */}
           <div className="rounded-2xl border border-border bg-card p-8">
