@@ -31,6 +31,12 @@ html {
   src: url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap");
 }
 
+@font-face {
+  font-family: "Fredoka";
+  font-display: swap;
+  src: url("https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&display=swap");
+}
+
 /* Optimize images */
 img {
   content-visibility: auto;
@@ -218,8 +224,8 @@ img {
   h4,
   h5,
   h6 {
-    font-family: "Nunito", "Open Sans", Arial, sans-serif;
-    font-weight: 700;
+    font-family: "Fredoka", "Nunito", "Open Sans", Arial, sans-serif;
+    font-weight: 600;
   }
   html {
     scroll-behavior: smooth;
