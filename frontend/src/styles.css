@@ -24,13 +24,6 @@ html {
   }
 }
 
-/* Improve font loading */
-@font-face {
-  font-family: "Nunito";
-  font-display: swap;
-  src: url("https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&display=swap");
-}
-
 /* Optimize images */
 img {
   content-visibility: auto;
@@ -80,6 +73,7 @@ img {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+
   /* Brand colors */
   --color-navy: var(--navy);
   --color-navy-light: var(--navy-light);
@@ -91,6 +85,7 @@ img {
   --color-orange-light: var(--orange-light);
   --color-cream: var(--cream);
   --color-cream-dark: var(--cream-dark);
+
   /* Animation */
   --animate-float: float 6s ease-in-out infinite;
   --animate-float-slow: float 8s ease-in-out infinite;
@@ -103,54 +98,60 @@ img {
 /* Brand color palette — Buttons & Bubbles */
 :root {
   --radius: 0.75rem;
+
   /* Navy (dominant) */
-  --navy: oklch(0.3106 0.0713 259.04);
-  --navy-light: oklch(0.3806 0.0983 259.93);
-  --navy-dark: oklch(0.257 0.0561 259.28);
+  --navy: #193054;
+  --navy-light: #25436f;
+  --navy-dark: #10213d;
+
   /* Gold (support) */
-  --gold: oklch(0.9017 0.1511 94.98);
-  --gold-light: oklch(0.9268 0.1103 93.9);
-  --gold-dark: oklch(0.6789 0.1359 85.1);
+  --gold: #fedd5a;
+  --gold-light: #fff0bd;
+  --gold-dark: #a18412;
+
   /* Orange (accent only) */
-  --orange: oklch(0.8015 0.1534 69.23);
-  --orange-light: oklch(0.8392 0.1256 69.47);
+  --orange: #fdaa3c;
+  --orange-light: #ffd9a8;
+
   /* Cream/neutral */
-  --cream: oklch(0.97 0.01 90);
-  --cream-dark: oklch(0.94 0.02 85);
+  --cream: #fff9e8;
+  --cream-dark: #f2ead3;
 
   /* Semantic mappings */
-  --background: oklch(0.98 0.005 90);
-  --foreground: oklch(0.3106 0.0713 259.04);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.3106 0.0713 259.04);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.3106 0.0713 259.04);
-  --primary: oklch(0.3106 0.0713 259.04);
-  --primary-foreground: oklch(0.9017 0.1511 94.98);
-  --secondary: oklch(0.9017 0.1511 94.98);
-  --secondary-foreground: oklch(0.3106 0.0713 259.04);
-  --muted: oklch(0.94 0.02 85);
-  --muted-foreground: oklch(0.45 0.03 250);
-  --accent: oklch(0.8015 0.1534 69.23);
-  --accent-foreground: oklch(0.3106 0.0713 259.04);
-  --destructive: oklch(0.577 0.245 27.325);
-  --destructive-foreground: oklch(0.98 0.005 90);
-  --border: oklch(0.88 0.03 85);
-  --input: oklch(0.88 0.03 85);
-  --ring: oklch(0.9017 0.1511 94.98);
-  --chart-1: oklch(0.3106 0.0713 259.04);
-  --chart-2: oklch(0.9017 0.1511 94.98);
-  --chart-3: oklch(0.8015 0.1534 69.23);
-  --chart-4: oklch(0.3806 0.0983 259.93);
-  --chart-5: oklch(0.9268 0.1103 93.9);
-  --sidebar: oklch(0.3106 0.0713 259.04);
-  --sidebar-foreground: oklch(0.9017 0.1511 94.98);
-  --sidebar-primary: oklch(0.9017 0.1511 94.98);
-  --sidebar-primary-foreground: oklch(0.3106 0.0713 259.04);
-  --sidebar-accent: oklch(0.3806 0.0983 259.93);
-  --sidebar-accent-foreground: oklch(0.9017 0.1511 94.98);
-  --sidebar-border: oklch(0.3806 0.0983 259.93);
-  --sidebar-ring: oklch(0.9017 0.1511 94.98);
+  --background: #fffdf5;
+  --foreground: var(--navy);
+  --card: #ffffff;
+  --card-foreground: var(--navy);
+  --popover: #ffffff;
+  --popover-foreground: var(--navy);
+  --primary: var(--navy);
+  --primary-foreground: var(--gold);
+  --secondary: var(--gold);
+  --secondary-foreground: var(--navy);
+  --muted: #f6eed8;
+  --muted-foreground: #4f5d74;
+  --accent: var(--orange);
+  --accent-foreground: var(--navy);
+  --destructive: #b42318;
+  --destructive-foreground: #fffdf5;
+  --border: #dfd5bd;
+  --input: #dfd5bd;
+  --ring: var(--gold);
+
+  --chart-1: var(--navy);
+  --chart-2: var(--gold);
+  --chart-3: var(--orange);
+  --chart-4: var(--navy-light);
+  --chart-5: var(--gold-light);
+
+  --sidebar: var(--navy);
+  --sidebar-foreground: var(--gold);
+  --sidebar-primary: var(--gold);
+  --sidebar-primary-foreground: var(--navy);
+  --sidebar-accent: var(--navy-light);
+  --sidebar-accent-foreground: var(--gold);
+  --sidebar-border: var(--navy-light);
+  --sidebar-ring: var(--gold);
 }
 
 @keyframes float {
@@ -218,7 +219,7 @@ img {
   h4,
   h5,
   h6 {
-    font-family: "Nunito", "Open Sans", Arial, sans-serif;
+    font-family: "Cooper BT", "Cooper Std Black", "Cooper Black", Georgia, serif;
     font-weight: 700;
   }
   html {
@@ -233,6 +234,7 @@ img {
     outline: 3px solid var(--color-gold);
     outline-offset: 2px;
   }
+
   /* Skip to content link */
   .skip-link {
     position: absolute;
