@@ -207,7 +207,7 @@ export function Header() {
                     <Link
                       to={link.to}
                       className={
-                        `flex-1 rounded-lg px-3 py-2 text-sm font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold ` +
+                        `flex-1 rounded-lg px-3 py-2 text-sm font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none active:bg-navy-light active:text-gold ` +
                         (isActiveTopLevel(link.to) ? "bg-navy-light text-gold" : "")
                       }
                       aria-current={isActiveTopLevel(link.to) ? "page" : undefined}
@@ -219,7 +219,7 @@ export function Header() {
                     {hasChildren && (
                       <button
                         type="button"
-                        className="ml-1 rounded-lg p-2 text-cream hover:bg-navy-light hover:text-gold"
+                        className="ml-1 rounded-lg p-2 text-cream hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none active:bg-navy-light active:text-gold"
                         aria-label={isOpen ? `Collapse ${link.label}` : `Expand ${link.label}`}
                         aria-expanded={isOpen}
                         onClick={() => setMobileSub(isOpen ? null : link.to)}
@@ -250,7 +250,7 @@ export function Header() {
                           <HashLink
                             to={`${child.to}#${child.hash}`}
                             smooth
-                            className="block rounded-lg px-3 py-2 text-sm text-cream/90 transition-colors hover:bg-navy-light hover:text-gold"
+                            className="block rounded-lg px-3 py-2 text-sm text-cream/90 transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none active:bg-navy-light active:text-gold"
                             onClick={() => {
                               setMobileOpen(false);
                               setMobileSub(null);
