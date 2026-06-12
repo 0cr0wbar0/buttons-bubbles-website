@@ -8,7 +8,7 @@ import { useState, useCallback } from "react";
 import { HashLink } from "react-router-hash-link";
 
 type Child = {
-  to: "/about" | "/services" | "/resources" | "/get-involved";
+  to: "/about" | "/services" | "/resources" | "/get-involved" | "/contact";
   hash: string;
   label: string;
 };
@@ -26,9 +26,13 @@ const navLinks: NavLink[] = [
     label: "About",
     children: [
       { to: "/about", hash: "mission", label: "Mission & Ethos" },
+      { to: "/about", hash: "approach-to-disability", label: "Approach to Disability" },
       { to: "/about", hash: "values", label: "Our Values" },
       { to: "/about", hash: "goals", label: "Our Goals" },
+      { to: "/about", hash: "meet-our-team", label: "Meet Our Team" },
+      { to: "/about", hash: "meet-our-board", label: "Meet Our Board" },
       { to: "/about", hash: "characters", label: "Characters" },
+      { to: "/about", hash: "disability-confident", label: "Accreditations" },
     ],
   },
   {
@@ -54,13 +58,21 @@ const navLinks: NavLink[] = [
     label: "Get Involved",
     children: [
       { to: "/get-involved", hash: "booking", label: "Book a Session" },
+      { to: "/get-involved", hash: "events", label: "Events" },
       { to: "/get-involved", hash: "donate", label: "Donate" },
-      { to: "/get-involved", hash: "work-with-us", label: "Work With Us" },
+      { to: "/get-involved", hash: "volunteer", label: "Volunteer" },
       { to: "/get-involved", hash: "members", label: "Members" },
       { to: "/get-involved", hash: "professionals", label: "Professionals" },
     ],
   },
-  { to: "/contact", label: "Contact" },
+  {
+    to: "/contact",
+    label: "Contact",
+    children: [
+      { to: "/contact", hash: "contact-details", label: "Get In Touch" },
+      { to: "/contact", hash: "feedback", label: "Feedback Form" },
+    ],
+  },
 ];
 
 export function Header() {

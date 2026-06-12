@@ -4,7 +4,6 @@
 
 import { Link } from "react-router-dom";
 
-import { useEffect } from "react";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 
@@ -50,11 +49,6 @@ const VALUES = [
 ];
 
 export default function HomePage() {
-  // Scroll to top when the page mounts so users don't start halfway down
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
   return (
     <div className="relative z-10">
       <PageHero
@@ -62,16 +56,10 @@ export default function HomePage() {
         subtitle="Placeholder text describing the mission. We are on a mission to increase representation and inclusion around disability for everybody."
       >
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link
-            to="/services"
-            className="rounded-xl bg-gold px-8 py-3 text-base font-bold text-navy transition-all hover:bg-gold-light hover:shadow-lg"
-          >
+          <Link to="/services" className="btn-primary">
             Explore Our Services
           </Link>
-          <Link
-            to="/contact"
-            className="rounded-xl border-2 border-gold px-8 py-3 text-base font-bold text-gold transition-all hover:bg-gold hover:text-navy"
-          >
+          <Link to="/contact" className="btn-primary">
             Get In Touch
           </Link>
         </div>
@@ -93,10 +81,7 @@ export default function HomePage() {
               Placeholder text about how we bring representation and inclusion to life through
               creative play, workshops, resources and community events.
             </p>
-            <Link
-              to="/about"
-              className="mt-6 inline-block rounded-xl bg-navy px-6 py-3 font-bold text-gold transition-all hover:bg-navy-light"
-            >
+            <Link to="/about" className="btn-secondary mt-6">
               Learn Our Story
             </Link>
           </div>
@@ -130,10 +115,7 @@ export default function HomePage() {
           ))}
         </div>
         <div className="text-center mt-8">
-          <Link
-            to="/services"
-            className="inline-block rounded-xl bg-gold px-8 py-3 font-bold text-navy transition-all hover:bg-gold-light"
-          >
+          <Link to="/services" className="btn-primary">
             View All Services
           </Link>
         </div>
@@ -157,22 +139,13 @@ export default function HomePage() {
         background="gold"
       >
         <div className="mt-8 flex flex-wrap justify-center gap-4">
-          <Link
-            to="/get-involved"
-            className="rounded-xl bg-navy px-8 py-3 font-bold text-gold hover:bg-navy-light transition-colors"
-          >
+          <Link to="/get-involved" className="btn-secondary">
             Book a Session
           </Link>
-          <Link
-            to="/get-involved#donate"
-            className="rounded-xl bg-navy px-8 py-3 font-bold text-gold hover:bg-navy-light transition-colors"
-          >
+          <Link to="/get-involved#donate" className="btn-secondary">
             Donate
           </Link>
-          <Link
-            to="/contact"
-            className="rounded-xl border-2 border-navy px-8 py-3 font-bold text-navy hover:bg-navy hover:text-gold transition-colors"
-          >
+          <Link to="/contact" className="btn-primary">
             Contact Us
           </Link>
         </div>

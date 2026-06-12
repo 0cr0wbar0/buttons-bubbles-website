@@ -1,7 +1,9 @@
-// About page — mission, story, values, goals and the Bubble World characters.
+// About page — mission, story, values, approach to disability, team, board, goals,
+// characters, and accreditation.
 // Characters are displayed as cards with their concept art images.
 // TODO: replace placeholder descriptions with real copy once the client provides it.
 
+import { Link } from "react-router-dom";
 import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 
@@ -64,6 +66,49 @@ const CHARACTERS = [
   },
 ];
 
+// TODO: replace with actual team member data
+const TEAM_MEMBERS = [
+  {
+    name: "Placeholder Name",
+    role: "Placeholder",
+    bio: "Placeholder biography text about this team member's background, experience, and what they bring to Buttons & Bubbles.",
+  },
+  {
+    name: "Placeholder Name",
+    role: "Placeholder",
+    bio: "Placeholder biography text about this team member's background, experience, and what they bring to Buttons & Bubbles.",
+  },
+  {
+    name: "Placeholder Name",
+    role: "Placeholder",
+    bio: "Placeholder biography text about this team member's background, experience, and what they bring to Buttons & Bubbles.",
+  },
+  {
+    name: "Placeholder Name",
+    role: "Placeholder",
+    bio: "Placeholder biography text about this team member's background, experience, and what they bring to Buttons & Bubbles.",
+  },
+];
+
+// TODO: replace with actual board member data
+const BOARD_MEMBERS = [
+  {
+    name: "Placeholder Name",
+    role: "Placeholder",
+    bio: "Placeholder biography text about this board member's background, expertise, and guidance they provide.",
+  },
+  {
+    name: "Placeholder Name",
+    role: "Placeholder",
+    bio: "Placeholder biography text about this board member's background, expertise, and guidance they provide.",
+  },
+  {
+    name: "Placeholder Name",
+    role: "Placeholder",
+    bio: "Placeholder biography text about this board member's background, expertise, and guidance they provide.",
+  },
+];
+
 function CharacterCard({ character }: { character: (typeof CHARACTERS)[number] }) {
   return (
     <div className="rounded-2xl border border-border bg-card p-6 text-center transition-all hover:shadow-lg hover:-translate-y-1">
@@ -84,6 +129,25 @@ function CharacterCard({ character }: { character: (typeof CHARACTERS)[number] }
       )}
       <h3 className="mt-4 text-lg font-bold text-card-foreground">{character.name}</h3>
       <p className="mt-2 text-sm text-muted-foreground">{character.desc}</p>
+    </div>
+  );
+}
+
+function PersonCard({
+  person,
+}: {
+  person: { name: string; role: string; bio: string };
+}) {
+  return (
+    <div className="rounded-2xl border border-border bg-card p-6 text-left transition-all hover:shadow-lg hover:-translate-y-1">
+      <div className="mx-auto mb-4 flex h-20 w-20 items-center justify-center rounded-full bg-navy">
+        <span className="text-3xl font-bold text-gold" aria-hidden="true">
+          {person.name.charAt(0)}
+        </span>
+      </div>
+      <h3 className="text-lg font-bold text-card-foreground">{person.name}</h3>
+      <p className="text-sm font-bold text-foreground">{person.role}</p>
+      <p className="mt-3 text-sm text-muted-foreground leading-relaxed">{person.bio}</p>
     </div>
   );
 }
@@ -128,10 +192,56 @@ export default function AboutPage() {
       </Section>
 
       <Section
+        id="approach-to-disability"
+        title="Our Approach and Perspective to Disability"
+        subtitle="Placeholder text about how we think about disability, inclusion, and representation."
+        background="muted"
+      >
+        <div className="max-w-4xl mx-auto space-y-8">
+          <div className="rounded-2xl border border-border bg-card p-8">
+            <h3 className="text-xl font-bold text-foreground">Our Perspective</h3>
+            <p className="mt-3 text-foreground/90 leading-relaxed">
+              Placeholder text about our perspective on disability — viewing it as a natural part of
+              human diversity, not a deficit. We focus on removing barriers rather than "fixing"
+              people.
+            </p>
+          </div>
+          <div className="rounded-2xl border border-border bg-card p-8">
+            <h3 className="text-xl font-bold text-foreground">Our Approach</h3>
+            <p className="mt-3 text-foreground/90 leading-relaxed">
+              Placeholder text about our hands-on, participatory approach. We co-create with the
+              disability community, ensuring everything we do is shaped by the people it's for.
+            </p>
+          </div>
+          <div className="grid gap-6 sm:grid-cols-3">
+            {[
+              {
+                title: "Co-Creation",
+                desc: "Placeholder. We work alongside the community, not at arm's length.",
+              },
+              {
+                title: "Barrier Removal",
+                desc: "Placeholder. We identify and remove barriers before they become obstacles.",
+              },
+              {
+                title: "Celebrating Difference",
+                desc: "Placeholder. We believe difference is something to be celebrated, not accommodated.",
+              },
+            ].map((item) => (
+              <div key={item.title} className="rounded-2xl bg-navy p-6 text-center">
+                <h3 className="text-base font-bold text-gold">{item.title}</h3>
+                <p className="mt-2 text-sm text-cream/80">{item.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </Section>
+
+      <Section
         id="values"
         title="Our Values"
         subtitle="Placeholder text about our core values and principles that guide everything we do."
-        background="muted"
+        background="background"
       >
         <div className="mt-8 grid gap-6 sm:grid-cols-2">
           {VALUES.map((v) => (
@@ -147,7 +257,7 @@ export default function AboutPage() {
         id="goals"
         title="Our Goals"
         subtitle="Placeholder text about our goals and what we are working towards."
-        background="background"
+        background="muted"
       >
         <div className="max-w-3xl">
           <ul className="mt-8 space-y-4">
@@ -167,15 +277,77 @@ export default function AboutPage() {
       </Section>
 
       <Section
+        id="meet-our-team"
+        title="Meet Our Team"
+        subtitle="Placeholder text about the people behind Buttons & Bubbles."
+        background="background"
+      >
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          {TEAM_MEMBERS.map((person, i) => (
+            <PersonCard key={i} person={person} />
+          ))}
+        </div>
+        <p className="mt-8 text-center text-sm text-muted-foreground">
+          Interested in joining the team?{" "}
+          <Link to="/get-involved#volunteer" className="font-bold text-foreground hover:text-gold transition-colors">
+            View our opportunities
+          </Link>
+        </p>
+      </Section>
+
+      <Section
+        id="meet-our-board"
+        title="Meet Our Board"
+        subtitle="Placeholder text about the individuals providing strategic guidance and governance."
+        background="muted"
+      >
+        <div className="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          {BOARD_MEMBERS.map((person, i) => (
+            <PersonCard key={i} person={person} />
+          ))}
+        </div>
+      </Section>
+
+      <Section
         id="characters"
         title="Our Characters"
         subtitle="Placeholder text about the characters of Bubble World and their role in our inclusive universe."
-        background="muted"
+        background="background"
       >
         <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
           {CHARACTERS.map((c, i) => (
             <CharacterCard key={i} character={c} />
           ))}
+        </div>
+      </Section>
+
+      <Section
+        id="disability-confident"
+        title="Our Accreditations"
+        subtitle="Placeholder text about the accreditations and schemes we are proud to be part of."
+        background="muted"
+      >
+        <div className="mx-auto max-w-2xl text-center">
+          <div className="rounded-2xl border border-border bg-card p-8">
+            <h3 className="text-xl font-bold text-foreground">Disability Confident Scheme</h3>
+            <p className="mt-3 text-foreground/90 leading-relaxed">
+              Placeholder text explaining our commitment to the Disability Confident scheme, and what
+              this means for our team, our partners, and the community we serve.
+            </p>
+            <div className="mt-6 flex flex-wrap items-center justify-center gap-6">
+              {/* TODO: replace with actual Disability Confident logo */}
+              <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-navy p-4">
+                <span className="text-center text-xs font-bold text-gold leading-tight">
+                  Disability<br />Confident<br />Logo
+                </span>
+              </div>
+              <div className="flex h-24 w-24 items-center justify-center rounded-2xl bg-navy p-4">
+                <span className="text-center text-xs font-bold text-gold leading-tight">
+                  Placeholder<br />Accreditation
+                </span>
+              </div>
+            </div>
+          </div>
         </div>
       </Section>
     </div>

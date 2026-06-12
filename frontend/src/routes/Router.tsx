@@ -12,32 +12,19 @@ import { RootLayout } from "./RootLayout";
 import { NotFoundPage } from "./NotFoundPage";
 
 function ScrollRestoration() {
-  const location = useLocation();
+  const { pathname, search, hash } = useLocation();
 
   useEffect(() => {
-    const hasHash = typeof location.hash === "string" && location.hash.length > 1;
-
-    // Deterministic behavior for route navigation (main navbar):
-    // - When there's NO hash, always land at the top of the page/header.
-    // - When there's a hash (sub-navigation), DO NOT force scrollTo(0,0)
-    //   so react-router-hash-link can scroll to the correct section.
-    try {
-      if ("scrollRestoration" in window.history) {
-        window.history.scrollRestoration = "manual";
-      }
-    } catch {
-      // no-op
+    if ("scrollRestoration" in window.history) {
+      window.history.scrollRestoration = "manual";
     }
+  }, []);
 
-    if (!hasHash) {
-      // Force to top immediately (not smooth) to avoid landing mid-page.
+  useEffect(() => {
+    if (!hash) {
       window.scrollTo(0, 0);
-
-      // Re-assert at next tick and after a short delay.
-      requestAnimationFrame(() => window.scrollTo(0, 0));
-      setTimeout(() => window.scrollTo(0, 0), 50);
     }
-  }, [location.pathname, location.search, location.hash]);
+  }, [pathname, search, hash]);
 
   return null;
 }

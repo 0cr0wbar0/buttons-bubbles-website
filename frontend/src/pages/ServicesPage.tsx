@@ -100,10 +100,7 @@ export default function ServicesPage() {
         </div>
 
         <div className="text-center mt-12">
-          <a
-            href="/get-involved#booking"
-            className="inline-block rounded-xl bg-gold px-8 py-3 font-bold text-navy hover:bg-gold-light transition-colors shadow-md"
-          >
+          <a href="/get-involved#booking" className="btn-primary">
             Book a Service
           </a>
         </div>

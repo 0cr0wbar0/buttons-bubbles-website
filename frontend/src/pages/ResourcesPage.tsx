@@ -69,10 +69,7 @@ export default function ResourcesPage() {
                   </p>
                 </div>
                 {/* TODO: wire up actual download links */}
-                <button
-                  className="shrink-0 rounded-xl bg-gold px-5 py-2 text-sm font-bold text-navy hover:bg-gold-light transition-colors"
-                  aria-label={`Download ${r.title}`}
-                >
+                <button className="btn-primary btn-sm shrink-0" aria-label={`Download ${r.title}`}>
                   Download
                 </button>
               </div>

@@ -22,10 +22,15 @@ export function Footer() {
           {/* Quick nav links */}
           <div>
             <h2 className="mb-3 text-lg font-bold text-gold">Quick Links</h2>
-            <ul className="grid grid-cols-2 gap-2 text-sm md:grid-cols-1">
+          <ul className="grid grid-cols-2 gap-2 text-sm md:grid-cols-1">
               <li>
                 <Link to="/about" className="text-cream/80 hover:text-gold transition-colors">
                   About
+                </Link>
+              </li>
+              <li>
+                <Link to="/about#meet-our-team" className="text-cream/80 hover:text-gold transition-colors">
+                  Our Team
                 </Link>
               </li>
               <li>
@@ -44,6 +49,11 @@ export function Footer() {
                   className="text-cream/80 hover:text-gold transition-colors"
                 >
                   Get Involved
+                </Link>
+              </li>
+              <li>
+                <Link to="/get-involved#events" className="text-cream/80 hover:text-gold transition-colors">
+                  Events
                 </Link>
               </li>
               <li>
