@@ -317,7 +317,7 @@ export default function GetInvolvedPage() {
                       <span className="inline-block rounded-full bg-gold/30 px-3 py-0.5 text-xs font-bold text-foreground">
                         {role.type}
                       </span>
-                      <span className="inline-block rounded-full bg-navy/10 px-3 py-0.5 text-xs font-medium text-muted-foreground">
+                      <span className="inline-block rounded-full bg-navy-light/30 px-3 py-0.5 text-xs font-medium text-foreground">
                         {role.commitment}
                       </span>
                     </div>

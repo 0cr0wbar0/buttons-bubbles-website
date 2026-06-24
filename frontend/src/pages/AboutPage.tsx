@@ -38,7 +38,7 @@ const CHARACTERS = [
     name: "Blossom",
     desc: "Placeholder description of this character and what they represent.",
     image: blossomImg,
-    bg: "rgba(170, 170, 170, 1)",
+    bg: "rgba(255, 255, 255, 0)",
   },
   {
     name: "Clementine",
@@ -50,7 +50,7 @@ const CHARACTERS = [
     name: "Ralphie",
     desc: "Placeholder description of this character and what they represent.",
     image: ralphieImg,
-    bg: "rgba(147, 147, 147, 1)",
+    bg: "rgba(255, 255, 255, 0)",
   },
   {
     name: "Placeholder Character 4",
@@ -166,24 +166,24 @@ export default function AboutPage() {
         subtitle="Placeholder text about our mission and ethos, why we exist and what drives us."
         background="background"
       >
-        <div className="max-w-3xl space-y-8">
-          <div>
-            <h3 className="text-xl font-bold text-foreground">Our Mission</h3>
-            <p className="mt-2 text-foreground/90 leading-relaxed">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div className="rounded-2xl bg-card p-6 border border-border shadow-sm">
+            <h3 className="text-lg font-bold text-card-foreground">Our Mission</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               Placeholder text about the mission. We are on a mission to increase representation and
               inclusion around disability for everybody.
             </p>
           </div>
-          <div>
-            <h3 className="text-xl font-bold text-foreground">Our Story</h3>
-            <p className="mt-2 text-foreground/90 leading-relaxed">
+          <div className="rounded-2xl bg-card p-6 border border-border shadow-sm">
+            <h3 className="text-lg font-bold text-card-foreground">Our Story</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               Placeholder text about the founding story, the inspiration behind Buttons & Bubbles,
               and the journey so far.
             </p>
           </div>
-          <div>
-            <h3 className="text-xl font-bold text-foreground">Our Ethos</h3>
-            <p className="mt-2 text-foreground/90 leading-relaxed">
+          <div className="rounded-2xl bg-card p-6 border border-border shadow-sm">
+            <h3 className="text-lg font-bold text-card-foreground">Our Ethos</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               Placeholder text describing the ethos. Every bubble blown is unique. We believe in
               celebrating difference and ensuring everyone feels they belong.
             </p>
@@ -197,18 +197,18 @@ export default function AboutPage() {
         subtitle="Placeholder text about how we think about disability, inclusion, and representation."
         background="muted"
       >
-        <div className="max-w-4xl mx-auto space-y-8">
-          <div className="rounded-2xl border border-border bg-card p-8">
-            <h3 className="text-xl font-bold text-foreground">Our Perspective</h3>
-            <p className="mt-3 text-foreground/90 leading-relaxed">
+        <div className="max-w-3xl mx-auto space-y-6">
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-card-foreground">Our Perspective</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               Placeholder text about our perspective on disability — viewing it as a natural part of
               human diversity, not a deficit. We focus on removing barriers rather than "fixing"
               people.
             </p>
           </div>
-          <div className="rounded-2xl border border-border bg-card p-8">
-            <h3 className="text-xl font-bold text-foreground">Our Approach</h3>
-            <p className="mt-3 text-foreground/90 leading-relaxed">
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-card-foreground">Our Approach</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               Placeholder text about our hands-on, participatory approach. We co-create with the
               disability community, ensuring everything we do is shaped by the people it's for.
             </p>
@@ -228,7 +228,7 @@ export default function AboutPage() {
                 desc: "Placeholder. We believe difference is something to be celebrated, not accommodated.",
               },
             ].map((item) => (
-              <div key={item.title} className="rounded-2xl bg-navy p-6 text-center">
+              <div key={item.title} className="rounded-2xl bg-navy p-6 text-center shadow-sm">
                 <h3 className="text-base font-bold text-gold">{item.title}</h3>
                 <p className="mt-2 text-sm text-cream/80">{item.desc}</p>
               </div>
@@ -243,7 +243,7 @@ export default function AboutPage() {
         subtitle="Placeholder text about our core values and principles that guide everything we do."
         background="background"
       >
-        <div className="mt-8 grid gap-6 sm:grid-cols-2">
+        <div className="max-w-3xl mx-auto space-y-6">
           {VALUES.map((v) => (
             <div key={v.title} className="rounded-2xl bg-card p-6 border border-border shadow-sm">
               <h3 className="text-lg font-bold text-card-foreground">{v.title}</h3>
@@ -259,20 +259,18 @@ export default function AboutPage() {
         subtitle="Placeholder text about our goals and what we are working towards."
         background="muted"
       >
-        <div className="max-w-3xl">
-          <ul className="mt-8 space-y-4">
-            {GOALS.map((g, i) => (
-              <li
-                key={i}
-                className="flex items-start gap-3 rounded-xl bg-card p-4 border border-border"
-              >
-                <span className="mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-gold text-xs font-bold text-navy">
-                  {i + 1}
-                </span>
-                <p className="text-card-foreground">{g}</p>
-              </li>
-            ))}
-          </ul>
+        <div className="max-w-3xl mx-auto space-y-6">
+          {GOALS.map((g, i) => (
+            <div
+              key={i}
+              className="flex items-start gap-3 rounded-2xl bg-card p-6 border border-border shadow-sm"
+            >
+              <span className="mt-0.5 flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-gold text-lg font-bold text-navy">
+                {i + 1}
+              </span>
+              <p className="text-card-foreground text-sm">{g}</p>
+            </div>
+          ))}
         </div>
       </Section>
 
@@ -327,10 +325,10 @@ export default function AboutPage() {
         subtitle="Placeholder text about the accreditations and schemes we are proud to be part of."
         background="muted"
       >
-        <div className="mx-auto max-w-2xl text-center">
-          <div className="rounded-2xl border border-border bg-card p-8">
-            <h3 className="text-xl font-bold text-foreground">Disability Confident Scheme</h3>
-            <p className="mt-3 text-foreground/90 leading-relaxed">
+        <div className="mx-auto max-w-3xl text-center">
+          <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
+            <h3 className="text-lg font-bold text-card-foreground">Disability Confident Scheme</h3>
+            <p className="mt-2 text-sm text-muted-foreground">
               Placeholder text explaining our commitment to the Disability Confident scheme, and what
               this means for our team, our partners, and the community we serve.
             </p>

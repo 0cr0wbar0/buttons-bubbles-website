@@ -97,8 +97,8 @@ export function Header() {
     <header className="sticky top-0 z-40 bg-navy shadow-lg" role="banner">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2" aria-label="Buttons & Bubbles — Home">
-          <span className="text-xl font-extrabold text-gold">Buttons & Bubbles</span>
-          <span className="hidden text-xs text-cream sm:block">CIC</span>
+          <span className="text-xl font-extrabold text-gold whitespace-nowrap">Buttons & Bubbles</span>
+          <span className="text-xs text-gold font-bold whitespace-nowrap">C.I.C.</span>
         </Link>
 
         {/* Desktop nav — visible from md breakpoint and up */}
