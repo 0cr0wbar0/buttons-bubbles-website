@@ -31,7 +31,6 @@ const navLinks: NavLink[] = [
       { to: "/about", hash: "goals", label: "Our Goals" },
       { to: "/about", hash: "meet-our-team", label: "Meet Our Team" },
       { to: "/about", hash: "meet-our-board", label: "Meet Our Board" },
-      { to: "/about", hash: "characters", label: "Characters" },
       { to: "/about", hash: "disability-confident", label: "Accreditations" },
     ],
   },
@@ -40,7 +39,7 @@ const navLinks: NavLink[] = [
     label: "Services",
     children: [
       { to: "/services", hash: "bubble-world", label: "Bubble World" },
-      { to: "/services", hash: "offerings", label: "Our Offerings" },
+      { to: "/services", hash: "offerings", label: "Our Services" },
       { to: "/services", hash: "support-groups", label: "Who We Support" },
     ],
   },
