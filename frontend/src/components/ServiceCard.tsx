@@ -5,6 +5,7 @@
 interface Service {
   title: string;
   description: string;
+  descriptionParts?: string[];
   icon: string;
 }
 
@@ -24,6 +25,13 @@ export function ServiceCard({ service, id }: ServiceCardProps) {
       </span>
       <h3 className="mt-3 text-lg font-bold text-card-foreground">{service.title}</h3>
       <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{service.description}</p>
+      {service.descriptionParts && service.descriptionParts.length > 0 && (
+        <div className="mt-3 space-y-2">
+          {service.descriptionParts.map((part) => (
+            <p key={part} className="text-sm text-foreground/90 leading-relaxed">{part}</p>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

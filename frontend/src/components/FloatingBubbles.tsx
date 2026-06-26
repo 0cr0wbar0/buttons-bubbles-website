@@ -37,7 +37,7 @@ export function FloatingBubbles() {
     >
       {BUBBLES.map((b) => {
         const colorMap = {
-          gold: "rgba(254,221,90,0.15)",
+          gold: "rgba(255,222,90,0.15)",
           navy: "rgba(25,48,84,0.10)",
           orange: "rgba(253,170,60,0.12)",
         };
