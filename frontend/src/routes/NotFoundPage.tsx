@@ -1,3 +1,5 @@
+// 404 page for unmatched routes.
+
 export function NotFoundPage() {
   return (
     <div className="flex min-h-screen items-center justify-center bg-navy px-4">

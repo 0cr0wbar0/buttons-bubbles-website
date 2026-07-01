@@ -1,3 +1,5 @@
+// Root layout wrapping every page: skip link, accessibility toolbar, header, main content, footer.
+
 import type { ReactNode } from "react";
 
 import appCss from "../styles.css?url";
@@ -9,7 +11,6 @@ import { SkipLink } from "../components/SkipLink";
 export function RootLayout({ children }: { children: ReactNode }) {
   return (
     <>
-      {/* Ensure stylesheet is linked exactly like the previous TanStack root route */}
       <link rel="stylesheet" href={appCss} />
       <SkipLink />
       <AccessibilityToolbar />

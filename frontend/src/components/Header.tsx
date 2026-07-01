@@ -1,10 +1,9 @@
-// Main navigation header — sticky at the top of every page.
-// Has a desktop dropdown menu and a mobile hamburger menu.
-// The dropdowns use hover + focus states so they work for mouse and keyboard users.
-// Mobile nav collapses submenus with an expand/collapse pattern.
+// Sticky navigation header with desktop dropdowns and mobile hamburger menu.
+// Dropdowns use hover + focus states for mouse and keyboard users.
+// Mobile nav uses expand/collapse for submenus.
 
 import { Link, useLocation } from "react-router-dom";
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import { HashLink } from "react-router-hash-link";
 
 type Child = {
@@ -48,8 +47,11 @@ const navLinks: NavLink[] = [
     label: "Resources",
     children: [
       { to: "/resources", hash: "downloads", label: "Free Downloads" },
+      { to: "/resources", hash: "advocacy", label: "Advocacy Documents" },
+      { to: "/resources", hash: "sensory-guides", label: "Sensory Guides for Events" },
+      { to: "/resources", hash: "animations", label: "Downloadable Animations" },
       { to: "/resources", hash: "videos", label: "Videos & Impact" },
-      { to: "/resources", hash: "blog", label: "Latest News" },
+      { to: "/resources", hash: "news", label: "Bubble World News HQ" },
     ],
   },
   {
@@ -74,23 +76,38 @@ const navLinks: NavLink[] = [
   },
 ];
 
+function ChevronIcon() {
+  return (
+    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+      <path d="m6 9 6 6 6-6" />
+    </svg>
+  );
+}
+
+function HamburgerIcon({ isOpen }: { isOpen: boolean }) {
+  return (
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+      {isOpen ? (
+        <path d="M18 6 6 18M6 6l12 12" />
+      ) : (
+        <>
+          <path d="M4 6h16" />
+          <path d="M4 12h16" />
+          <path d="M4 18h16" />
+        </>
+      )}
+    </svg>
+  );
+}
+
+const linkBase = "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none";
+
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openMenu, setOpenMenu] = useState<string | null>(null);
   const [mobileSub, setMobileSub] = useState<string | null>(null);
   const location = useLocation();
-
-  const isActiveTopLevel = useCallback(
-    (to: string) => {
-      const current = location.pathname;
-
-      // Homepage: ensure Home stays active on load/refresh at "/".
-      if (to === "/") return current === "/";
-
-      return current === to;
-    },
-    [location.pathname],
-  );
+  const current = location.pathname;
 
   return (
     <header className="sticky top-0 z-40 bg-navy shadow-lg" role="banner">
@@ -100,12 +117,13 @@ export function Header() {
           <span className="text-xs text-gold font-bold whitespace-nowrap">C.I.C.</span>
         </Link>
 
-        {/* Desktop nav — visible from md breakpoint and up */}
+        {/* Desktop nav */}
         <nav className="hidden md:block" aria-label="Main navigation">
           <ul className="flex items-center gap-1">
             {navLinks.map((link) => {
-              const hasChildren = !!link.children?.length;
+              const isActive = link.to === "/" ? current === "/" : current === link.to;
               const isOpen = openMenu === link.to;
+              const hasChildren = !!link.children?.length;
 
               return (
                 <li
@@ -116,38 +134,20 @@ export function Header() {
                 >
                   <Link
                     to={link.to}
-                    className={
-                      `inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none ` +
-                      (isActiveTopLevel(link.to) ? "bg-navy-light text-gold" : "")
-                    }
-                    aria-current={isActiveTopLevel(link.to) ? "page" : undefined}
+                    className={`${linkBase} ${isActive ? "bg-navy-light text-gold" : ""}`}
+                    aria-current={isActive ? "page" : undefined}
                     aria-haspopup={hasChildren || undefined}
                     aria-expanded={hasChildren ? isOpen : undefined}
                     onFocus={() => hasChildren && setOpenMenu(link.to)}
                   >
                     {link.label}
-                    {hasChildren && (
-                      <svg
-                        width="12"
-                        height="12"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke="currentColor"
-                        strokeWidth="2.5"
-                        aria-hidden="true"
-                      >
-                        <path d="m6 9 6 6 6-6" />
-                      </svg>
-                    )}
+                    {hasChildren && <ChevronIcon />}
                   </Link>
 
-                  {/* Dropdown menu — appears on hover/focus */}
+                  {/* Dropdown submenu */}
                   {hasChildren && isOpen && (
                     <div className="absolute left-0 top-full pt-1">
-                      <ul
-                        className="min-w-[14rem] rounded-xl border border-navy-light bg-navy py-2 shadow-2xl animate-fade-in"
-                        role="menu"
-                      >
+                      <ul className="min-w-[14rem] rounded-xl border border-navy-light bg-navy py-2 shadow-2xl animate-fade-in" role="menu">
                         {link.children!.map((child) => (
                           <li key={`${child.to}#${child.hash}`} role="none">
                             <HashLink
@@ -155,9 +155,7 @@ export function Header() {
                               role="menuitem"
                               smooth
                               className="block px-4 py-2 text-sm text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none"
-                              onClick={() => {
-                                setOpenMenu(null);
-                              }}
+                              onClick={() => setOpenMenu(null)}
                             >
                               {child.label}
                             </HashLink>
@@ -172,56 +170,35 @@ export function Header() {
           </ul>
         </nav>
 
-        {/* Mobile hamburger button */}
+        {/* Mobile hamburger */}
         <button
           className="rounded-lg p-2 text-gold hover:bg-navy-light md:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? "Close menu" : "Open menu"}
           aria-expanded={mobileOpen}
         >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            strokeWidth="2"
-            aria-hidden="true"
-          >
-            {mobileOpen ? (
-              <path d="M18 6 6 18M6 6l12 12" />
-            ) : (
-              <>
-                <path d="M4 6h16" />
-                <path d="M4 12h16" />
-                <path d="M4 18h16" />
-              </>
-            )}
-          </svg>
+          <HamburgerIcon isOpen={mobileOpen} />
         </button>
       </div>
 
-      {/* Mobile nav panel — slides open below the header */}
+      {/* Mobile nav panel */}
       {mobileOpen && (
-        <nav
-          className="border-t border-navy-light bg-navy px-4 py-4 md:hidden"
-          aria-label="Mobile navigation"
-        >
+        <nav className="border-t border-navy-light bg-navy px-4 py-4 md:hidden" aria-label="Mobile navigation">
           <ul className="space-y-1">
             {navLinks.map((link) => {
-              const hasChildren = !!link.children?.length;
+              const isActive = link.to === "/" ? current === "/" : current === link.to;
               const isOpen = mobileSub === link.to;
+              const hasChildren = !!link.children?.length;
 
               return (
                 <li key={link.to}>
                   <div className="flex items-center">
                     <Link
                       to={link.to}
-                      className={
-                        `flex-1 rounded-lg px-3 py-2 text-sm font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none active:bg-navy-light active:text-gold ` +
-                        (isActiveTopLevel(link.to) ? "bg-navy-light text-gold" : "")
-                      }
-                      aria-current={isActiveTopLevel(link.to) ? "page" : undefined}
+                      className={`flex-1 rounded-lg px-3 py-2 text-sm font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none active:bg-navy-light active:text-gold ${
+                        isActive ? "bg-navy-light text-gold" : ""
+                      }`}
+                      aria-current={isActive ? "page" : undefined}
                       onClick={() => setMobileOpen(false)}
                     >
                       {link.label}
@@ -243,9 +220,7 @@ export function Header() {
                           stroke="currentColor"
                           strokeWidth="2.5"
                           aria-hidden="true"
-                          className={
-                            isOpen ? "rotate-180 transition-transform" : "transition-transform"
-                          }
+                          className={isOpen ? "rotate-180 transition-transform" : "transition-transform"}
                         >
                           <path d="m6 9 6 6 6-6" />
                         </svg>
@@ -253,7 +228,7 @@ export function Header() {
                     )}
                   </div>
 
-                  {/* Expanded sub-menu items on mobile */}
+                  {/* Mobile submenu items */}
                   {hasChildren && isOpen && (
                     <ul className="ml-4 mt-1 space-y-1 border-l border-navy-light pl-3">
                       {link.children!.map((child) => (

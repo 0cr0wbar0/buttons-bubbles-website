@@ -1,6 +1,5 @@
-// PageHero — the big banner at the top of every page.
-// Dark navy background, gold heading, optional subtitle and children.
-// Used by every page to give a consistent top section.
+// Hero banner used at the top of every page.
+// Dark navy background with floating bubbles, gold heading, optional subtitle and children.
 
 interface PageHeroProps {
   title: string;

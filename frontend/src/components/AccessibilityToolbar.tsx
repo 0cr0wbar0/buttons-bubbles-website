@@ -1,20 +1,15 @@
-// Accessibility toolbar — a floating panel that lets users tweak how the site looks and feels.
-// Sits in the bottom-right corner. Toggles for theme, font size, motion, reading font,
-// and a "read page aloud" button that uses the browser's speech synthesis.
-//
-// Changes apply to the <html> element via CSS classes so they affect everything.
-// Settings are not persisted between sessions yet — something to add later.
+// Floating accessibility panel in the bottom-right corner.
+// Lets users toggle theme, font size, motion, reading font, and read-aloud.
+// Changes apply CSS classes to <html> so they cascade everywhere.
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 
 type Theme = "light" | "dark" | "contrast" | "soft";
 type FontSize = 0 | 1 | 2 | 3;
 
-// Text size labels and their corresponding CSS classes.
 const FONT_LABELS = ["Small", "Default", "Large", "Extra Large"];
 const FONT_CLASSES = ["font-size-small", "", "font-size-large", "font-size-xlarge"];
 
-// Theme options — each has a colour swatch for the little circle preview.
 const THEMES: { id: Theme; label: string; swatch: string }[] = [
   { id: "light", label: "Light", swatch: "bg-cream border-navy" },
   { id: "dark", label: "Dark", swatch: "bg-navy border-gold" },
@@ -27,42 +22,26 @@ export function AccessibilityToolbar() {
   const [fontSize, setFontSize] = useState<FontSize>(1);
   const [theme, setTheme] = useState<Theme>("light");
   const [readableFont, setReadableFont] = useState(false);
+  const [easyLayout, setEasyLayout] = useState(false);
   const [motionOff, setMotionOff] = useState(false);
   const [isSpeaking, setIsSpeaking] = useState(false);
 
-  // Applies the right CSS class for the selected font size
-  const updateFontSize = useCallback((newSize: FontSize) => {
-    const root = document.documentElement;
-    FONT_CLASSES.forEach((className) => className && root.classList.remove(className));
-    if (FONT_CLASSES[newSize]) {
-      root.classList.add(FONT_CLASSES[newSize]);
-    }
-  }, []);
-
-  // Keep font size in sync when it changes (also runs on mount for initial setup)
-  useEffect(() => {
-    updateFontSize(fontSize);
-  }, [fontSize, updateFontSize]);
-
-  // Switch theme — removes all theme classes then adds the selected one
+  // Sync all settings to <html> classes whenever they change
   useEffect(() => {
     const root = document.documentElement;
+
+    FONT_CLASSES.forEach((c) => c && root.classList.remove(c));
+    if (FONT_CLASSES[fontSize]) root.classList.add(FONT_CLASSES[fontSize]);
+
     root.classList.remove("theme-dark", "theme-contrast", "theme-soft");
     if (theme !== "light") root.classList.add(`theme-${theme}`);
-  }, [theme]);
 
-  // Toggle the accessible reading font (Lexend, wider spacing)
-  useEffect(() => {
-    document.documentElement.classList.toggle("readable-font", readableFont);
-  }, [readableFont]);
+    root.classList.toggle("readable-font", readableFont);
+    root.classList.toggle("easy-reading-layout", easyLayout);
+    root.classList.toggle("motion-off", motionOff);
+  }, [fontSize, theme, readableFont, easyLayout, motionOff]);
 
-  // Reduce/disable motion for people who get dizzy from animations
-  useEffect(() => {
-    document.documentElement.classList.toggle("motion-off", motionOff);
-  }, [motionOff]);
-
-  // Uses the Web Speech API to read the main content out loud.
-  // Cancels if already speaking (toggle behaviour).
+  // Read main content aloud using the Web Speech API
   function readPageAloud() {
     if (isSpeaking) {
       window.speechSynthesis.cancel();
@@ -71,12 +50,10 @@ export function AccessibilityToolbar() {
     }
 
     const main = document.getElementById("main-content");
-    if (!main) {
-      return;
-    }
+    if (!main) return;
 
     const utterance = new SpeechSynthesisUtterance(main.innerText);
-    utterance.rate = 0.95; // Slightly slower than default for clarity
+    utterance.rate = 0.95;
     utterance.onend = () => setIsSpeaking(false);
     window.speechSynthesis.speak(utterance);
     setIsSpeaking(true);
@@ -84,11 +61,10 @@ export function AccessibilityToolbar() {
 
   return (
     <>
-      {/* Toggle button for the toolbar panel */}
       <button
         data-acc-toolbar-trigger
         onClick={() => setIsOpen(!isOpen)}
-        className="fixed right-4 bottom-2 z-30 rounded-full bg-navy px-2 py-1.5 text-gold shadow-lg transition-transform hover:scale-105 focus-visible:scale-105"
+        className="accessibility-toolbar fixed right-4 bottom-2 z-30 rounded-full bg-navy px-2 py-1.5 text-gold shadow-lg transition-transform hover:scale-105 focus-visible:scale-105"
         aria-label={isOpen ? "Close settings" : "Open settings"}
         aria-expanded={isOpen}
         aria-controls="display-settings-panel"
@@ -109,15 +85,13 @@ export function AccessibilityToolbar() {
         </svg>
       </button>
 
-      {/* Settings panel — slides up when the cog is clicked */}
       {isOpen && (
         <div
           id="display-settings-panel"
-          className="fixed bottom-14 right-4 z-30 w-[20rem] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl border border-navy-light bg-card p-5 shadow-2xl"
+          className="accessibility-toolbar fixed bottom-14 right-4 z-30 w-[20rem] max-w-[calc(100vw-2rem)] max-h-[calc(100vh-6rem)] overflow-y-auto rounded-2xl border border-navy-light bg-card p-5 shadow-2xl"
           role="dialog"
           aria-label="Display settings"
         >
-          {/* Header with close button */}
           <div className="mb-4 flex items-center justify-between">
             <h3 className="text-base font-bold text-foreground">Display Settings</h3>
             <button
@@ -139,7 +113,6 @@ export function AccessibilityToolbar() {
             </button>
           </div>
 
-          {/* Theme selector */}
           <fieldset className="mb-5">
             <legend className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               Theme
@@ -158,17 +131,13 @@ export function AccessibilityToolbar() {
                   }`}
                   aria-pressed={theme === t.id}
                 >
-                  <span
-                    className={`h-5 w-5 rounded-full border-2 ${t.swatch}`}
-                    aria-hidden="true"
-                  />
+                  <span className={`h-5 w-5 rounded-full border-2 ${t.swatch}`} aria-hidden="true" />
                   <span>{t.label}</span>
                 </button>
               ))}
             </div>
           </fieldset>
 
-          {/* Font size selector */}
           <fieldset className="mb-5">
             <legend className="mb-2 text-xs font-semibold uppercase tracking-wide text-muted-foreground">
               Text Size
@@ -187,11 +156,7 @@ export function AccessibilityToolbar() {
                   aria-label={`Text size ${label}`}
                   title={label}
                 >
-                  <span
-                    className="font-bold"
-                    style={{ fontSize: `${0.65 + i * 0.18}rem` }}
-                    aria-hidden="true"
-                  >
+                  <span className="font-bold" style={{ fontSize: `${0.65 + i * 0.18}rem` }} aria-hidden="true">
                     A
                   </span>
                 </button>
@@ -200,7 +165,6 @@ export function AccessibilityToolbar() {
             <p className="mt-1 text-xs text-muted-foreground">Current: {FONT_LABELS[fontSize]}</p>
           </fieldset>
 
-          {/* Toggle switches and read aloud */}
           <div className="space-y-2">
             <ToggleRow
               label="Reduce Motion"
@@ -214,9 +178,19 @@ export function AccessibilityToolbar() {
               checked={readableFont}
               onChange={() => setReadableFont(!readableFont)}
             />
+            <ToggleRow
+              label="Easy Reading Layout"
+              hint="Left-align all headings and text"
+              checked={easyLayout}
+              onChange={() => setEasyLayout(!easyLayout)}
+            />
             <button
               onClick={readPageAloud}
-              className="flex w-full items-center justify-between rounded-xl border border-border bg-muted px-3 py-2.5 text-sm font-medium text-foreground transition-colors hover:bg-accent/20"
+              className={`flex w-full items-center justify-between rounded-xl border-2 px-3 py-2.5 text-sm font-medium transition-all ${
+                isSpeaking
+                  ? "border-gold bg-gold text-navy shadow-sm"
+                  : "border-border bg-muted text-foreground hover:border-gold/50"
+              }`}
             >
               <span className="flex items-center gap-2">
                 <span aria-hidden="true">{isSpeaking ? "⏹" : "🔊"}</span>
@@ -230,7 +204,7 @@ export function AccessibilityToolbar() {
   );
 }
 
-// Small reusable toggle switch component for on/off settings
+// Reusable toggle switch for on/off accessibility settings
 function ToggleRow({
   label,
   hint,
@@ -253,7 +227,6 @@ function ToggleRow({
         <span className="block text-sm font-medium text-foreground">{label}</span>
         <span className="block text-xs text-muted-foreground">{hint}</span>
       </span>
-      {/* Visual toggle switch */}
       <span
         className={`relative h-6 w-11 shrink-0 rounded-full transition-colors ${
           checked ? "bg-gold" : "bg-muted-foreground/30"
