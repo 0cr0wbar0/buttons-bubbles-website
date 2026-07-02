@@ -431,7 +431,8 @@ button.btn-block {
 
 /* Easy reading layout — uniform width, left-aligned text (except buttons & character names) */
 /* Exclude the accessibility toolbar from these styles */
-.easy-reading-layout section .mx-auto {
+.easy-reading-layout section .mx-auto,
+.easy-reading-layout footer .mx-auto {
   max-width: 56rem !important; /* max-w-4xl — consistent spacing on all pages */
 }
 /* Allow grids within mx-auto containers to maintain full width */
