@@ -131,7 +131,10 @@ export function AccessibilityToolbar() {
                   }`}
                   aria-pressed={theme === t.id}
                 >
-                  <span className={`h-5 w-5 rounded-full border-2 ${t.swatch}`} aria-hidden="true" />
+                  <span
+                    className={`h-5 w-5 rounded-full border-2 ${t.swatch}`}
+                    aria-hidden="true"
+                  />
                   <span>{t.label}</span>
                 </button>
               ))}
@@ -156,7 +159,11 @@ export function AccessibilityToolbar() {
                   aria-label={`Text size ${label}`}
                   title={label}
                 >
-                  <span className="font-bold" style={{ fontSize: `${0.65 + i * 0.18}rem` }} aria-hidden="true">
+                  <span
+                    className="font-bold"
+                    style={{ fontSize: `${0.65 + i * 0.18}rem` }}
+                    aria-hidden="true"
+                  >
                     A
                   </span>
                 </button>

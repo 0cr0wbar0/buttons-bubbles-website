@@ -26,7 +26,9 @@ export function ServiceCard({ service, id }: ServiceCardProps) {
       <h3 className="mt-3 text-lg font-bold text-card-foreground">{service.title}</h3>
       <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{service.description}</p>
       {service.descriptionParts?.map((part) => (
-        <p key={part} className="mt-3 text-sm text-foreground/90 leading-relaxed">{part}</p>
+        <p key={part} className="mt-3 text-sm text-foreground/90 leading-relaxed">
+          {part}
+        </p>
       ))}
     </div>
   );
