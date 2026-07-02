@@ -1,6 +1,4 @@
-// Service definitions and support groups data.
-// These are used by the ServicesPage and the ServiceCard components.
-// The descriptions here are real-ish copy provided by the client — not placeholders.
+// Service definitions and support groups data used by ServicesPage.
 
 export const services = [
   {
@@ -121,37 +119,13 @@ export const services = [
   ];
 
 export const supportGroups = [
-  {
-    title: "Children & Young People",
-    description: "Placeholder text about how we support children and young people.",
-  },
+  { title: "Children & Young People", description: "Placeholder text about how we support children and young people." },
   { title: "Families", description: "Placeholder text about support for families and carers." },
-  {
-    title: "Siblings & Young Carers",
-    description: "Placeholder text about dedicated support for siblings.",
-  },
-  {
-    title: "Schools & Education",
-    description: "Placeholder text about working with schools and education settings.",
-  },
-  {
-    title: "Hospitals & Hospices",
-    description: "Placeholder text about reaching those in healthcare settings.",
-  },
-  {
-    title: "Community Organisations",
-    description: "Placeholder text about partnerships with community groups.",
-  },
-  {
-    title: "Disabled Adults",
-    description: "Placeholder text about supporting disabled adults in our community.",
-  },
-  {
-    title: "The Older Generation",
-    description: "Placeholder text about supporting older people and addressing age-related disability.",
-  },
-  {
-    title: "Care Homes",
-    description: "Placeholder text about working with care homes and residential settings.",
-  },
+  { title: "Siblings & Young Carers", description: "Placeholder text about dedicated support for siblings." },
+  { title: "Schools & Education", description: "Placeholder text about working with schools and education settings." },
+  { title: "Hospitals & Hospices", description: "Placeholder text about reaching those in healthcare settings." },
+  { title: "Community Organisations", description: "Placeholder text about partnerships with community groups." },
+  { title: "Disabled Adults", description: "Placeholder text about supporting disabled adults in our community." },
+  { title: "The Older Generation", description: "Placeholder text about supporting older people and addressing age-related disability." },
+  { title: "Care Homes", description: "Placeholder text about working with care homes and residential settings." },
 ];

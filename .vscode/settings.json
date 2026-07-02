@@ -1,0 +1,12 @@
+{
+  "css.lint.unknownAtRules": "ignore",
+  "css.lint.unknownProperties": "ignore",
+  "css.lint.validProperties": [
+    "content-visibility",
+    "contain-intrinsic-size",
+    "scroll-behavior"
+  ],
+  "files.associations": {
+    "*.css": "tailwindcss"
+  }
+}

@@ -5,12 +5,15 @@ import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
 import ServicesPage from "@/pages/ServicesPage";
 import ResourcesPage from "@/pages/ResourcesPage";
+import PoliciesPage from "@/pages/PoliciesPage";
 import GetInvolvedPage from "@/pages/GetInvolvedPage";
 import ContactPage from "@/pages/ContactPage";
 
 import { RootLayout } from "./RootLayout";
 import { NotFoundPage } from "./NotFoundPage";
 
+// Scrolls to the top of the page on navigation.
+// Skips scroll when navigating to a hash anchor.
 function ScrollRestoration() {
   const { pathname, search, hash } = useLocation();
 
@@ -38,6 +41,7 @@ export function AppRouter() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/services" element={<ServicesPage />} />
         <Route path="/resources" element={<ResourcesPage />} />
+        <Route path="/policies" element={<PoliciesPage />} />
         <Route path="/get-involved" element={<GetInvolvedPage />} />
         <Route path="/contact" element={<ContactPage />} />
         <Route path="*" element={<NotFoundPage />} />

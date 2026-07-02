@@ -1,6 +1,5 @@
-// Reusable section wrapper — keeps spacing consistent across all pages.
-// Drop in a section with a title, optional subtitle, children, and pick
-// a background variant to match the design.
+// Reusable section wrapper with consistent spacing and background variants.
+// Used by every page to keep layout uniform.
 
 import type { ReactNode } from "react";
 
@@ -42,10 +41,8 @@ export function Section({
   children,
   background = "background",
 }: SectionProps) {
-  const bgClass = backgroundClass[background];
-
   return (
-    <section id={id} className={`${bgClass} px-4 py-16 scroll-mt-24`}>
+    <section id={id} className={`${backgroundClass[background]} px-4 py-16 scroll-mt-24`}>
       <div className="mx-auto max-w-6xl">
         <header className="text-center mb-8">
           <h2 className={`text-3xl font-bold ${titleClass[background]}`}>{title}</h2>
