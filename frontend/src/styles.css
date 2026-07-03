@@ -109,43 +109,43 @@ img {
   /* Navy (dominant) — #193054 RGB 26,49,84 */
   --navy: #193054;
   --navy-light: #214176;
-  --navy-dark: #12233E;
+  --navy-dark: #12233e;
   /* Gold (support) — #fedd5a RGB 255,222,90 */
   --gold: #fedd5a;
-  --gold-light: #FFE68F;
-  --gold-dark: #BE9010;
+  --gold-light: #ffe68f;
+  --gold-dark: #be9010;
   /* Orange (accent only) — #fdaa3c RGB 253,170,60 */
   --orange: #fdaa3c;
-  --orange-light: #FFBB6A;
+  --orange-light: #ffbb6a;
   /* Cream/neutral */
-  --cream: #F8F5EE;
-  --cream-dark: #F1EADC;
+  --cream: #f8f5ee;
+  --cream-dark: #f1eadc;
 
   /* Semantic mappings */
-  --background: #FAF8F5;
+  --background: #faf8f5;
   --foreground: #193054;
-  --card: #FFFFFF;
+  --card: #ffffff;
   --card-foreground: #193054;
-  --popover: #FFFFFF;
+  --popover: #ffffff;
   --popover-foreground: #193054;
   --primary: #193054;
   --primary-foreground: #fedd5a;
   --secondary: #fedd5a;
   --secondary-foreground: #193054;
-  --muted: #F1EADC;
+  --muted: #f1eadc;
   --muted-foreground: #495766;
   --accent: #fdaa3c;
   --accent-foreground: #193054;
-  --destructive: #E7000B;
-  --destructive-foreground: #FAF8F5;
-  --border: #E1D6C2;
-  --input: #E1D6C2;
+  --destructive: #e7000b;
+  --destructive-foreground: #faf8f5;
+  --border: #e1d6c2;
+  --input: #e1d6c2;
   --ring: #fedd5a;
   --chart-1: #193054;
   --chart-2: #fedd5a;
   --chart-3: #fdaa3c;
   --chart-4: #214176;
-  --chart-5: #FFE68F;
+  --chart-5: #ffe68f;
   --sidebar: #193054;
   --sidebar-foreground: #fedd5a;
   --sidebar-primary: #fedd5a;
@@ -161,6 +161,7 @@ img {
   100% {
     transform: translateY(0px);
   }
+
   50% {
     transform: translateY(-20px);
   }
@@ -171,6 +172,7 @@ img {
     opacity: 0;
     transform: translateY(30px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -181,6 +183,7 @@ img {
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -191,15 +194,19 @@ img {
     transform: translate3d(0, 110vh, 0) scale(0.6);
     opacity: 0;
   }
+
   8% {
     opacity: 1;
   }
+
   50% {
     transform: translate3d(20px, 50vh, 0) scale(1);
   }
+
   92% {
     opacity: 1;
   }
+
   100% {
     transform: translate3d(-15px, -15vh, 0) scale(0.9);
     opacity: 0;
@@ -210,11 +217,13 @@ img {
   * {
     border-color: var(--color-border);
   }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: "Open Sans", "Calibri", Helvetica, Arial, sans-serif;
   }
+
   h1,
   h2,
   h3,
@@ -227,18 +236,22 @@ img {
     font-family: "Fredoka", "Cooper Lt BT", "Nunito", "Calibri", Helvetica, Arial, sans-serif;
     font-weight: 600;
   }
+
   html {
     scroll-behavior: smooth;
   }
+
   :focus-visible {
     outline: 3px solid var(--color-gold);
     outline-offset: 2px;
     border-radius: 4px;
   }
+
   a:focus-visible {
     outline: 3px solid var(--color-gold);
     outline-offset: 2px;
   }
+
   /* Skip to content link */
   .skip-link {
     position: absolute;
@@ -253,6 +266,7 @@ img {
     border-radius: 0 0 0.5rem 0.5rem;
     transition: top 0.2s;
   }
+
   .skip-link:focus {
     top: 0;
   }
@@ -281,6 +295,7 @@ button.btn-secondary {
   border: none;
   text-align: center;
 }
+
 .btn-primary:hover,
 a.btn-primary:hover,
 button.btn-primary:hover,
@@ -288,7 +303,42 @@ button.btn-primary:hover,
 a.btn-secondary:hover,
 button.btn-secondary:hover {
   background-color: var(--gold-light);
-  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary-inverted,
+a.btn-primary-inverted,
+button.btn-primary-inverted,
+.btn-secondary-inverted,
+a.btn-secondary-inverted,
+button.btn-secondary-inverted {
+  display: inline-block;
+  border-radius: 0.75rem;
+  background-color: var(--navy);
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--gold);
+  transition: all 0.2s ease-in-out;
+  text-decoration: none;
+  line-height: 1.5;
+  cursor: pointer;
+  border: none;
+  text-align: center;
+}
+
+.btn-primary-inverted:hover,
+a.btn-primary-inverted:hover,
+button.btn-primary-inverted:hover,
+.btn-secondary-inverted:hover,
+a.btn-secondary-inverted:hover,
+button.btn-secondary-inverted:hover {
+  background-color: var(--navy-light);
+  box-shadow:
+    0 3px 6px 5px rgba(0, 0, 0, 0.1),
+    0 3px 4px 2px rgba(0, 0, 0, 0.1);
 }
 
 /* Small variant for compact buttons */
@@ -311,63 +361,63 @@ button.btn-block {
 
 /* Dark theme */
 .theme-dark {
-  --background: #1A2D4E;
-  --foreground: #F4F0E8;
+  --background: #1a2d4e;
+  --foreground: #f4f0e8;
   --card: #213659;
-  --card-foreground: #F4F0E8;
+  --card-foreground: #f4f0e8;
   --popover: #162940;
-  --popover-foreground: #F4F0E8;
-  --primary: #F5D76E;
-  --primary-foreground: #1A2D4E;
-  --secondary: #28466E;
-  --secondary-foreground: #F4F0E8;
-  --muted: #1E3048;
-  --muted-foreground: #F4F0E8;
-  --accent: #E8A84C;
-  --accent-foreground: #F4F0E8;
-  --border: #3A5070;
-  --input: #334A6A;
+  --popover-foreground: #f4f0e8;
+  --primary: #f5d76e;
+  --primary-foreground: #1a2d4e;
+  --secondary: #28466e;
+  --secondary-foreground: #f4f0e8;
+  --muted: #1e3048;
+  --muted-foreground: #f4f0e8;
+  --accent: #e8a84c;
+  --accent-foreground: #f4f0e8;
+  --border: #3a5070;
+  --input: #334a6a;
   --navy: #213659;
-  --navy-light: #2A4060;
-  --navy-dark: #1A2D4E;
-  --gold: #F2D46A;
-  --gold-light: #FAE89A;
-  --gold-dark: #C9A83A;
-  --orange: #E8A84C;
-  --orange-light: #F5C87A;
-  --cream: #F0EDE6;
-  --cream-dark: #C9C4B8;
+  --navy-light: #2a4060;
+  --navy-dark: #1a2d4e;
+  --gold: #f2d46a;
+  --gold-light: #fae89a;
+  --gold-dark: #c9a83a;
+  --orange: #e8a84c;
+  --orange-light: #f5c87a;
+  --cream: #f0ede6;
+  --cream-dark: #c9c4b8;
 }
 
 /* High contrast — same brand colours, pushed to max contrast for readability */
 .theme-contrast {
-  --background: #FFFFFF;
-  --foreground: #0D1A2E;
-  --card: #FFFFFF;
-  --card-foreground: #0D1A2E;
-  --popover: #FFFFFF;
-  --popover-foreground: #0D1A2E;
-  --primary: #0D1A2E;
+  --background: #ffffff;
+  --foreground: #0d1a2e;
+  --card: #ffffff;
+  --card-foreground: #0d1a2e;
+  --popover: #ffffff;
+  --popover-foreground: #0d1a2e;
+  --primary: #0d1a2e;
   --primary-foreground: #fedd5a;
   --secondary: #fedd5a;
-  --secondary-foreground: #0D1A2E;
-  --muted: #E8E4DC;
-  --muted-foreground: #0D1A2E;
+  --secondary-foreground: #0d1a2e;
+  --muted: #e8e4dc;
+  --muted-foreground: #0d1a2e;
   --accent: #fdaa3c;
-  --accent-foreground: #0D1A2E;
-  --border: #0D1A2E;
-  --input: #D0C8B8;
+  --accent-foreground: #0d1a2e;
+  --border: #0d1a2e;
+  --input: #d0c8b8;
   --ring: #fedd5a;
-  --navy: #0D1A2E;
+  --navy: #0d1a2e;
   --navy-light: #193054;
-  --navy-dark: #060E1A;
+  --navy-dark: #060e1a;
   --gold: #fedd5a;
-  --gold-light: #FFE68F;
-  --gold-dark: #BE9010;
+  --gold-light: #ffe68f;
+  --gold-dark: #be9010;
   --orange: #fdaa3c;
-  --orange-light: #FFBB6A;
-  --cream: #FFFFFF;
-  --cream-dark: #E8E4DC;
+  --orange-light: #ffbb6a;
+  --cream: #ffffff;
+  --cream-dark: #e8e4dc;
 }
 
 .theme-contrast input,
@@ -401,32 +451,32 @@ button.btn-block {
 
 /* Soft sepia */
 .theme-soft {
-  --background: #EDE7D8;
-  --foreground: #3A2A1E;
-  --card: #F5F0E4;
-  --card-foreground: #3A2A1E;
-  --popover: #F5F0E4;
-  --popover-foreground: #3A2A1E;
-  --primary: #5A3E28;
-  --primary-foreground: #EDE7D8;
-  --secondary: #D4C4A4;
-  --secondary-foreground: #3A2A1E;
-  --muted: #E0D8C4;
-  --muted-foreground: #6A5A48;
-  --accent: #B08A5A;
-  --accent-foreground: #2A1A0E;
-  --border: #C8BCA4;
-  --input: #D8D0BC;
+  --background: #ede7d8;
+  --foreground: #3a2a1e;
+  --card: #f5f0e4;
+  --card-foreground: #3a2a1e;
+  --popover: #f5f0e4;
+  --popover-foreground: #3a2a1e;
+  --primary: #5a3e28;
+  --primary-foreground: #ede7d8;
+  --secondary: #d4c4a4;
+  --secondary-foreground: #3a2a1e;
+  --muted: #e0d8c4;
+  --muted-foreground: #6a5a48;
+  --accent: #b08a5a;
+  --accent-foreground: #2a1a0e;
+  --border: #c8bca4;
+  --input: #d8d0bc;
   --navy: #193054;
   --navy-light: #214176;
-  --navy-dark: #12233E;
+  --navy-dark: #12233e;
   --gold: #fedd5a;
-  --gold-light: #FFE68F;
-  --gold-dark: #BE9010;
+  --gold-light: #ffe68f;
+  --gold-dark: #be9010;
   --orange: #fdaa3c;
-  --orange-light: #FFBB6A;
-  --cream: #F8F5EE;
-  --cream-dark: #F1EADC;
+  --orange-light: #ffbb6a;
+  --cream: #f8f5ee;
+  --cream-dark: #f1eadc;
 }
 
 /* Easy reading layout — uniform width, left-aligned text (except buttons & character names) */
@@ -435,10 +485,12 @@ button.btn-block {
 .easy-reading-layout footer .mx-auto {
   max-width: 56rem !important; /* max-w-4xl — consistent spacing on all pages */
 }
+
 /* Allow grids within mx-auto containers to maintain full width */
 .easy-reading-layout section .mx-auto > .grid {
   max-width: none !important;
 }
+
 .easy-reading-layout .relative.z-10 > h1,
 .easy-reading-layout .relative.z-10 > h1 + p,
 .easy-reading-layout section header h2,
@@ -454,6 +506,7 @@ button.btn-block {
 .easy-reading-layout section .text-foreground {
   text-align: left !important;
 }
+
 /* Keep buttons, character/team names under images centered */
 /* Made these selectors more specific to only target buttons within sections */
 .easy-reading-layout section button,
@@ -469,8 +522,8 @@ button.btn-block {
 .easy-reading-layout section .text-center a.btn-secondary,
 /* Team/character card: name and role after a circular avatar stay centered */
 /* Use adjacent sibling (+) for role (immediately after h3), not general sibling (~) which also hits bio */
-.easy-reading-layout section .mx-auto.rounded-full ~ h3,
-.easy-reading-layout section .mx-auto.rounded-full ~ h3 + p,
+.easy-reading-layout section .mx-auto.rounded-full~h3,
+.easy-reading-layout section .mx-auto.rounded-full~h3+p,
 /* Keep CTA paragraphs centered in easy reading mode — these are call-to-action sections with buttons */
 .easy-reading-layout section .text-center.mt-12 p {
   text-align: center !important;
@@ -500,6 +553,7 @@ button.btn-block {
 .easy-reading-layout section h3.accreditation-title.text-center {
   text-align: left !important;
 }
+
 /* Accreditation description paragraph — left-aligned in easy reading mode */
 .easy-reading-layout section h3.accreditation-title.text-center + p {
   text-align: left !important;
@@ -529,6 +583,7 @@ button.btn-block {
 .motion-off * {
   scroll-behavior: auto !important;
 }
+
 .motion-off *,
 .motion-off *::before,
 .motion-off *::after {
@@ -536,9 +591,11 @@ button.btn-block {
   animation-iteration-count: 1 !important;
   transition-duration: 0.001ms !important;
 }
+
 .motion-off [data-bubbles] {
   display: none !important;
 }
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -546,6 +603,7 @@ button.btn-block {
     animation-duration: 0.001ms !important;
     transition-duration: 0.001ms !important;
   }
+
   [data-bubbles] {
     display: none;
   }
@@ -555,12 +613,15 @@ button.btn-block {
 html.font-size-small {
   font-size: 88%;
 }
+
 html.font-size-large {
   font-size: 112%;
 }
+
 html.font-size-xlarge {
   font-size: 125%;
 }
+
 html.font-size-xxlarge {
   font-size: 140%;
 }

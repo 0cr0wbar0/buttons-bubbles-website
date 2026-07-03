@@ -78,7 +78,15 @@ const navLinks: NavLink[] = [
 
 function ChevronIcon() {
   return (
-    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+    <svg
+      width="12"
+      height="12"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2.5"
+      aria-hidden="true"
+    >
       <path d="m6 9 6 6 6-6" />
     </svg>
   );
@@ -86,7 +94,15 @@ function ChevronIcon() {
 
 function HamburgerIcon({ isOpen }: { isOpen: boolean }) {
   return (
-    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+    <svg
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      aria-hidden="true"
+    >
       {isOpen ? (
         <path d="M18 6 6 18M6 6l12 12" />
       ) : (
@@ -100,7 +116,8 @@ function HamburgerIcon({ isOpen }: { isOpen: boolean }) {
   );
 }
 
-const linkBase = "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none";
+const linkBase =
+  "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -113,7 +130,9 @@ export function Header() {
     <header className="sticky top-0 z-40 bg-navy shadow-lg" role="banner">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         <Link to="/" className="flex items-center gap-2" aria-label="Buttons & Bubbles — Home">
-          <span className="text-xl font-extrabold text-gold whitespace-nowrap">Buttons & Bubbles</span>
+          <span className="text-xl font-extrabold text-gold whitespace-nowrap">
+            Buttons & Bubbles
+          </span>
           <span className="text-xs text-gold font-bold whitespace-nowrap">C.I.C.</span>
         </Link>
 
@@ -147,7 +166,10 @@ export function Header() {
                   {/* Dropdown submenu */}
                   {hasChildren && isOpen && (
                     <div className="absolute left-0 top-full pt-1">
-                      <ul className="min-w-[14rem] rounded-xl border border-navy-light bg-navy py-2 shadow-2xl animate-fade-in" role="menu">
+                      <ul
+                        className="min-w-[14rem] rounded-xl border border-navy-light bg-navy py-2 shadow-2xl animate-fade-in"
+                        role="menu"
+                      >
                         {link.children!.map((child) => (
                           <li key={`${child.to}#${child.hash}`} role="none">
                             <HashLink
@@ -183,7 +205,10 @@ export function Header() {
 
       {/* Mobile nav panel */}
       {mobileOpen && (
-        <nav className="border-t border-navy-light bg-navy px-4 py-4 md:hidden" aria-label="Mobile navigation">
+        <nav
+          className="border-t border-navy-light bg-navy px-4 py-4 md:hidden"
+          aria-label="Mobile navigation"
+        >
           <ul className="space-y-1">
             {navLinks.map((link) => {
               const isActive = link.to === "/" ? current === "/" : current === link.to;
@@ -220,7 +245,9 @@ export function Header() {
                           stroke="currentColor"
                           strokeWidth="2.5"
                           aria-hidden="true"
-                          className={isOpen ? "rotate-180 transition-transform" : "transition-transform"}
+                          className={
+                            isOpen ? "rotate-180 transition-transform" : "transition-transform"
+                          }
                         >
                           <path d="m6 9 6 6 6-6" />
                         </svg>
