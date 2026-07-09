@@ -6,64 +6,28 @@ import { PageHero } from "@/components/PageHero";
 import { Section } from "@/components/Section";
 import { ServiceCard, SimpleServiceCard } from "@/components/ServiceCard";
 import { services, supportGroups } from "@/data/services";
+import { characters, characterSlug } from "@/data/characters";
 
-import blossomImg from "../assets/Blossom concept 3.jpeg";
-import clementineImg from "../assets/clementine concept 2 - CC.png";
-import ralphieImg from "../assets/Ralphie concept 2.jpeg";
-
-const CHARACTERS = [
-  {
-    name: "Blossom",
-    desc: "Placeholder description of this character and what they represent.",
-    image: blossomImg,
-    bg: "rgba(255, 255, 255, 0)",
-  },
-  {
-    name: "Clementine",
-    desc: "Placeholder description of this character and what they represent.",
-    image: clementineImg,
-    bg: "rgba(255, 255, 255, 0)",
-  },
-  {
-    name: "Ralphie",
-    desc: "Placeholder description of this character and what they represent.",
-    image: ralphieImg,
-    bg: "rgba(255, 255, 255, 0)",
-  },
-  {
-    name: "Placeholder Character 4",
-    desc: "Placeholder description of this character and what they represent.",
-  },
-  {
-    name: "Placeholder Character 5",
-    desc: "Placeholder description of this character and what they represent.",
-  },
-  {
-    name: "Placeholder Character 6",
-    desc: "Placeholder description of this character and what they represent.",
-  },
-];
-
-function CharacterCard({ character }: { character: (typeof CHARACTERS)[number] }) {
+function CharacterCard({ character }: { character: (typeof characters)[number] }) {
   return (
-    <div className="rounded-2xl border border-border bg-card p-6 text-center transition-all hover:shadow-lg hover:-translate-y-1">
-      {character.image ? (
-        <img
-          src={character.image}
-          alt={`Illustration of ${character.name}`}
-          style={{ backgroundColor: character.bg || "rgba(255, 255, 255, 0)" }}
-          className="mx-auto h-32 w-32 rounded-full object-contain border border-border"
+    <Link
+      to={`/services/character/${characterSlug(character.name)}`}
+      className="block rounded-2xl border border-border bg-card p-6 text-center transition-all hover:shadow-lg hover:-translate-y-1"
+    >
+      <div className="mx-auto h-32 w-32 rounded-full overflow-hidden border border-border bg-black">
+        <video
+          src={character.video}
+          muted
+          loop
+          playsInline
+          className="h-full w-full object-contain"
+          onMouseEnter={(e) => (e.currentTarget as HTMLVideoElement).play()}
+          onMouseLeave={(e) => (e.currentTarget as HTMLVideoElement).pause()}
         />
-      ) : (
-        <div className="mx-auto h-32 w-32 rounded-full bg-muted border border-border flex items-center justify-center">
-          <span className="text-4xl" aria-hidden="true">
-            👤
-          </span>
-        </div>
-      )}
+      </div>
       <h3 className="mt-4 text-lg font-bold text-card-foreground">{character.name}</h3>
       <p className="mt-2 text-sm text-muted-foreground">{character.desc}</p>
-    </div>
+    </Link>
   );
 }
 
@@ -117,14 +81,14 @@ export default function ServicesPage() {
             ))}
           </div>
 
-          <div className="mt-16">
+          <div className="mt-16" id="meet-the-characters">
             <h3 className="text-2xl font-bold text-foreground">Meet the Characters</h3>
             <p className="mt-2 text-muted-foreground">
               The heart of Bubble World — each character is unique, just like every bubble.
             </p>
             <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {CHARACTERS.map((c, i) => (
-                <CharacterCard key={i} character={c} />
+              {characters.map((c) => (
+                <CharacterCard key={c.name} character={c} />
               ))}
             </div>
           </div>
