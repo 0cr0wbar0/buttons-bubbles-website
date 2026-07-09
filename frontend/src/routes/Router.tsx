@@ -4,6 +4,7 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import HomePage from "@/pages/HomePage";
 import AboutPage from "@/pages/AboutPage";
 import ServicesPage from "@/pages/ServicesPage";
+import CharacterPage from "@/pages/CharacterPage";
 import ResourcesPage from "@/pages/ResourcesPage";
 import PoliciesPage from "@/pages/PoliciesPage";
 import GetInvolvedPage from "@/pages/GetInvolvedPage";
@@ -40,6 +41,7 @@ export function AppRouter() {
         <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/services" element={<ServicesPage />} />
+        <Route path="/services/character/:name" element={<CharacterPage />} />
         <Route path="/resources" element={<ResourcesPage />} />
         <Route path="/policies" element={<PoliciesPage />} />
         <Route path="/get-involved" element={<GetInvolvedPage />} />
