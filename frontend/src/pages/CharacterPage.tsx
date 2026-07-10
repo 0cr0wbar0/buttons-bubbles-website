@@ -17,7 +17,7 @@ export default function CharacterPage() {
 
   return (
     <div className="relative z-10 flex flex-col min-h-[calc(100vh-4rem)]">
-      /* Slim header area — with floating bubbles */
+      {/* Slim header area — with floating bubbles */}
       <div className="relative overflow-hidden bg-navy px-4 py-6 text-center shrink-0">
         <FloatingBubbles />
         <div className="relative z-10">
@@ -38,7 +38,7 @@ export default function CharacterPage() {
         </div>
       </div>
 
-      /* Video section — fills remaining space, button at bottom */
+      {/* Video section — fills remaining space, button at bottom */}
       <section className="flex flex-col items-center justify-center bg-black flex-1 px-4 py-6">
         <div className="max-w-lg w-full flex flex-col items-center">
           <video
