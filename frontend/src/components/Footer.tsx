@@ -3,6 +3,7 @@
 
 import { Link } from "react-router-dom";
 import { FloatingBubbles } from "./FloatingBubbles";
+import inverseLogo from "../assets/Logos/Digital/Inverse/B&B_logo_RGB_inverse.svg";
 
 export function Footer() {
   return (
@@ -11,7 +12,11 @@ export function Footer() {
       <div className="relative mx-auto max-w-7xl px-4 py-12">
         <div className="grid gap-8 md:grid-cols-3">
           <div>
-            <h2 className="mb-3 text-lg font-bold text-gold">Buttons & Bubbles CIC</h2>
+            <img
+              src={inverseLogo}
+              alt="Buttons & Bubbles CIC"
+              className="mb-3 h-14 w-auto max-w-full"
+            />
             <p className="text-sm leading-relaxed text-cream/80">
               Representation through imagination & play. Increasing inclusion and representation for
               the disability community across society.

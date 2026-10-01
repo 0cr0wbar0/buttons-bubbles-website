@@ -5,6 +5,7 @@
 import { Link, useLocation } from "react-router-dom";
 import { useState } from "react";
 import { HashLink } from "react-router-hash-link";
+import inverseLogo from "../assets/Logos/Digital/Inverse/B&B_logo_RGB_inverse.svg";
 
 type Child = {
   to: "/about" | "/services" | "/resources" | "/get-involved" | "/contact";
@@ -117,7 +118,7 @@ function HamburgerIcon({ isOpen }: { isOpen: boolean }) {
 }
 
 const linkBase =
-  "inline-flex items-center gap-1 rounded-lg px-3 py-2 text-sm font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none";
+  "inline-flex items-center gap-1 rounded-lg px-2 py-2 text-base font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none lg:px-3";
 
 export function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -129,11 +130,8 @@ export function Header() {
   return (
     <header className="sticky top-0 z-40 bg-navy shadow-lg" role="banner">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
-        <Link to="/" className="flex items-center gap-2" aria-label="Buttons & Bubbles — Home">
-          <span className="text-xl font-extrabold text-gold whitespace-nowrap">
-            Buttons & Bubbles
-          </span>
-          <span className="text-xs text-gold font-bold whitespace-nowrap">C.I.C.</span>
+        <Link to="/" className="flex shrink-0 items-center" aria-label="Buttons & Bubbles — Home">
+          <img src={inverseLogo} alt="" className="h-12 w-auto" />
         </Link>
 
         {/* Desktop nav */}
@@ -176,7 +174,7 @@ export function Header() {
                               to={`${child.to}#${child.hash}`}
                               role="menuitem"
                               smooth
-                              className="block px-4 py-2 text-sm text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none"
+                              className="block px-4 py-2 text-base text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none"
                               onClick={() => setOpenMenu(null)}
                             >
                               {child.label}
@@ -220,7 +218,7 @@ export function Header() {
                   <div className="flex items-center">
                     <Link
                       to={link.to}
-                      className={`flex-1 rounded-lg px-3 py-2 text-sm font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none active:bg-navy-light active:text-gold ${
+                      className={`flex-1 rounded-lg px-3 py-2 text-base font-medium text-cream transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none active:bg-navy-light active:text-gold ${
                         isActive ? "bg-navy-light text-gold" : ""
                       }`}
                       aria-current={isActive ? "page" : undefined}
@@ -263,7 +261,7 @@ export function Header() {
                           <HashLink
                             to={`${child.to}#${child.hash}`}
                             smooth
-                            className="block rounded-lg px-3 py-2 text-sm text-cream/90 transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none active:bg-navy-light active:text-gold"
+                            className="block rounded-lg px-3 py-2 text-base text-cream/90 transition-colors hover:bg-navy-light hover:text-gold focus:bg-navy-light focus:text-gold focus:outline-none active:bg-navy-light active:text-gold"
                             onClick={() => {
                               setMobileOpen(false);
                               setMobileSub(null);
