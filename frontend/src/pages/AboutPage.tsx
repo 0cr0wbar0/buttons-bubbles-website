@@ -93,6 +93,7 @@ export default function AboutPage() {
         title="Mission & Ethos"
         subtitle="Placeholder text about our mission and ethos, why we exist and what drives us."
         background="background"
+        headerClassName="mx-auto max-w-3xl"
       >
         <div className="mx-auto max-w-3xl space-y-6">
           <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
@@ -124,6 +125,7 @@ export default function AboutPage() {
         title="Our Approach and Perspective to Disability"
         subtitle="Placeholder text about how we think about disability, inclusion, and representation."
         background="muted"
+        headerClassName="mx-auto max-w-3xl"
       >
         <div className="mx-auto max-w-3xl space-y-6">
           <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
@@ -170,6 +172,7 @@ export default function AboutPage() {
         title="Our Values"
         subtitle="Placeholder text about our core values and principles that guide everything we do."
         background="background"
+        headerClassName="mx-auto max-w-3xl"
       >
         <div className="mx-auto max-w-3xl space-y-6">
           {values.map((value) => (
@@ -189,6 +192,7 @@ export default function AboutPage() {
         title="Our Goals"
         subtitle="Placeholder text about our goals and what we are working towards."
         background="muted"
+        headerClassName="mx-auto max-w-3xl"
       >
         <div className="mx-auto max-w-3xl space-y-6">
           {goals.map((goal, index) => (
@@ -245,13 +249,14 @@ export default function AboutPage() {
         title="Our Accreditations"
         subtitle="Placeholder text about the accreditations and schemes we are proud to be part of."
         background="background"
+        headerClassName="mx-auto max-w-3xl"
       >
         <div className="mx-auto max-w-3xl">
           <div className="rounded-2xl border border-border bg-card p-6 shadow-sm">
-            <h3 className="text-center text-lg font-bold text-card-foreground">
+            <h3 className="text-left text-lg font-bold text-card-foreground">
               Disability Confident Scheme
             </h3>
-            <p className="mt-2 text-center text-sm text-muted-foreground">
+            <p className="mt-2 text-left text-sm text-muted-foreground">
               Placeholder text explaining our commitment to the Disability Confident scheme, and
               what this means for our team, our partners, and the community we serve.
             </p>

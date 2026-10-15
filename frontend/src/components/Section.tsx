@@ -11,6 +11,7 @@ interface SectionProps {
   subtitle?: string;
   children: ReactNode;
   background?: SectionBackground;
+  headerClassName?: string;
 }
 
 const backgroundClass: Record<SectionBackground, string> = {
@@ -40,13 +41,14 @@ export function Section({
   subtitle,
   children,
   background = "background",
+  headerClassName = "",
 }: SectionProps) {
   return (
     <section id={id} className={`${backgroundClass[background]} px-4 py-16 scroll-mt-24`}>
       <div className="mx-auto max-w-6xl">
-        <header className="text-center mb-8">
-          <h2 className={`text-3xl font-bold ${titleClass[background]}`}>{title}</h2>
-          {subtitle && <p className={`mt-2 ${subtitleClass[background]}`}>{subtitle}</p>}
+        <header className={`mb-8 ${headerClassName}`}>
+          <h2 className={`text-center text-3xl font-bold ${titleClass[background]}`}>{title}</h2>
+          {subtitle && <p className={`mt-2 text-left ${subtitleClass[background]}`}>{subtitle}</p>}
         </header>
         {children}
       </div>

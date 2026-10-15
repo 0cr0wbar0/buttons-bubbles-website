@@ -302,10 +302,12 @@ button.btn-primary:hover,
 .btn-secondary:hover,
 a.btn-secondary:hover,
 button.btn-secondary:hover {
-  background-color: var(--gold-light);
+  background-color: var(--navy);
+  color: var(--gold);
+  text-decoration: none;
   box-shadow:
-    0 4px 6px -1px rgba(0, 0, 0, 0.1),
-    0 2px 4px -2px rgba(0, 0, 0, 0.1);
+    0 8px 20px -6px rgba(25, 48, 84, 0.45),
+    0 2px 6px -2px rgba(25, 48, 84, 0.3);
 }
 
 .btn-primary-inverted,
@@ -335,10 +337,108 @@ button.btn-primary-inverted:hover,
 .btn-secondary-inverted:hover,
 a.btn-secondary-inverted:hover,
 button.btn-secondary-inverted:hover {
-  background-color: var(--navy-light);
+  background-color: var(--gold);
+  color: var(--navy);
+  text-decoration: none;
   box-shadow:
-    0 3px 6px 5px rgba(0, 0, 0, 0.1),
-    0 3px 4px 2px rgba(0, 0, 0, 0.1);
+    0 8px 20px -6px rgba(254, 221, 90, 0.55),
+    0 2px 6px -2px rgba(25, 48, 84, 0.35);
+}
+
+/* ---- Context-aware hovers: keep buttons visible on matching backgrounds ---- */
+/* Gold buttons sit on navy (PageHero + navy sections). Navy hover would vanish,
+   so hover to cream (light on dark) with a gold ring — all site palette. */
+.bg-navy .btn-primary:hover,
+.bg-navy a.btn-primary:hover,
+.bg-navy button.btn-primary:hover,
+.bg-navy .btn-secondary:hover,
+.bg-navy a.btn-secondary:hover,
+.bg-navy button.btn-secondary:hover {
+  background-color: var(--cream);
+  color: var(--navy);
+  text-decoration: none;
+  box-shadow:
+    0 0 0 3px var(--gold),
+    0 8px 20px -6px rgba(248, 245, 238, 0.45);
+}
+
+/* Navy buttons sit on gold (gold CTA section). Gold hover would vanish,
+   so stay dark (dark on light) and signal hover with cream ring + deeper tone. */
+.bg-gold .btn-primary-inverted:hover,
+.bg-gold a.btn-primary-inverted:hover,
+.bg-gold button.btn-primary-inverted:hover,
+.bg-gold .btn-secondary-inverted:hover,
+.bg-gold a.btn-secondary-inverted:hover,
+.bg-gold button.btn-secondary-inverted:hover {
+  background-color: var(--navy-dark);
+  color: var(--gold);
+  text-decoration: none;
+  box-shadow:
+    0 0 0 3px var(--cream),
+    0 10px 24px -8px rgba(25, 48, 84, 0.55);
+}
+
+/* Base visibility guards (no hover): outline buttons that match their section */
+.bg-navy .btn-primary-inverted,
+.bg-navy a.btn-primary-inverted,
+.bg-navy button.btn-primary-inverted,
+.bg-navy .btn-secondary-inverted,
+.bg-navy a.btn-secondary-inverted,
+.bg-navy button.btn-secondary-inverted {
+  box-shadow: 0 0 0 2px var(--gold);
+}
+
+/* Navy buttons on navy sections would vanish — hover to solid gold instead */
+.bg-navy .btn-primary-inverted:hover,
+.bg-navy a.btn-primary-inverted:hover,
+.bg-navy button.btn-primary-inverted:hover,
+.bg-navy .btn-secondary-inverted:hover,
+.bg-navy a.btn-secondary-inverted:hover,
+.bg-navy button.btn-secondary-inverted:hover {
+  background-color: var(--gold);
+  color: var(--navy);
+  text-decoration: none;
+  box-shadow:
+    0 0 0 3px var(--cream),
+    0 8px 20px -6px rgba(254, 221, 90, 0.55);
+}
+
+/* Character video section is black — navy hover would vanish there too */
+.bg-black .btn-primary:hover,
+.bg-black a.btn-primary:hover,
+.bg-black button.btn-primary:hover,
+.bg-black .btn-secondary:hover,
+.bg-black a.btn-secondary:hover,
+.bg-black button.btn-secondary:hover {
+  background-color: var(--cream);
+  color: var(--navy);
+  text-decoration: none;
+  box-shadow:
+    0 0 0 3px var(--gold),
+    0 8px 20px -6px rgba(248, 245, 238, 0.45);
+}
+
+.bg-black .btn-primary-inverted:hover,
+.bg-black a.btn-primary-inverted:hover,
+.bg-black button.btn-primary-inverted:hover,
+.bg-black .btn-secondary-inverted:hover,
+.bg-black a.btn-secondary-inverted:hover,
+.bg-black button.btn-secondary-inverted:hover {
+  background-color: var(--gold);
+  color: var(--navy);
+  text-decoration: none;
+  box-shadow:
+    0 0 0 3px var(--cream),
+    0 8px 20px -6px rgba(254, 221, 90, 0.55);
+}
+
+.bg-gold .btn-primary,
+.bg-gold a.btn-primary,
+.bg-gold button.btn-primary,
+.bg-gold .btn-secondary,
+.bg-gold a.btn-secondary,
+.bg-gold button.btn-secondary {
+  box-shadow: 0 0 0 2px var(--navy);
 }
 
 /* Small variant for compact buttons */
@@ -347,6 +447,139 @@ a.btn-sm,
 button.btn-sm {
   padding: 0.5rem 1.25rem;
   font-size: 0.875rem;
+}
+
+/* ============ High-contrast professional hover system (site palette only) ============ */
+/* Uses only brand vars: navy / navy-light / navy-dark / gold / gold-light / gold-dark /
+   orange / orange-light / cream / cream-dark. No font changes, no underlines. */
+
+/* Cards: gold-dark border + deeper shadow makes hover obvious but professional */
+.hover\:shadow-lg:hover,
+.hover\:shadow-md:hover {
+  border-color: var(--gold-dark) !important;
+  box-shadow:
+    0 12px 28px -10px rgba(25, 48, 84, 0.35),
+    0 4px 10px -4px rgba(25, 48, 84, 0.2) !important;
+}
+
+/* Card lift stays subtle */
+.hover\:-translate-y-1:hover {
+  border-color: var(--gold-dark);
+}
+
+/* Inline “Read more / Find out more” style links on light backgrounds:
+   navy pill + gold text = max contrast, no underline */
+span.hover\:text-gold:hover {
+  background-color: var(--navy);
+  color: var(--gold) !important;
+  text-decoration: none !important;
+  border-radius: 0.5rem;
+  padding: 0.15rem 0.6rem;
+  margin-left: -0.6rem;
+}
+
+/* Body inline links on light backgrounds (About / Contact / Get Involved):
+   gold-on-light is near-invisible, so swap to navy pill + gold text */
+a.font-bold.hover\:text-gold:hover,
+a.hover\:text-gold.font-bold:hover {
+  background-color: var(--navy);
+  color: var(--gold) !important;
+  text-decoration: none !important;
+  border-radius: 0.5rem;
+  padding: 0.15rem 0.6rem;
+  margin-left: -0.6rem;
+}
+
+/* Header desktop nav (navy bar, cream text):
+   solid gold pill + navy text reads instantly, stays on-palette */
+header nav a.hover\:bg-navy-light:hover,
+header .hover\:bg-navy-light:hover {
+  background-color: var(--gold) !important;
+  color: var(--navy) !important;
+  text-decoration: none !important;
+}
+
+/* Header dropdown items (gold menu, navy text): invert to navy + gold */
+header ul[role="menu"] a.hover\:bg-navy-light:hover {
+  background-color: var(--navy) !important;
+  color: var(--gold) !important;
+}
+
+/* Mobile nav panel (gold background): invert to navy + gold */
+nav[class*="bg-gold"] a.hover\:bg-navy-light:hover,
+nav[class*="bg-gold"] button.hover\:bg-navy-light:hover {
+  background-color: var(--navy) !important;
+  color: var(--gold) !important;
+  text-decoration: none !important;
+}
+
+/* Mobile hamburger (gold icon on navy): gold pill + navy icon */
+header button.hover\:bg-navy-light:hover {
+  background-color: var(--gold) !important;
+  color: var(--navy) !important;
+}
+
+/* Footer quick links (navy bg, cream/80 text): gold pill + navy text */
+footer ul a.hover\:text-gold:hover {
+  background-color: var(--gold);
+  color: var(--navy) !important;
+  text-decoration: none !important;
+  border-radius: 0.5rem;
+  padding: 0.15rem 0.6rem;
+  margin-left: -0.6rem;
+}
+
+/* Footer legal link: gold pill, no underline per request */
+footer div[class*="border-t"] a.hover\:text-gold:hover,
+footer a.font-medium.hover\:text-gold:hover {
+  background-color: var(--gold);
+  color: var(--navy) !important;
+  text-decoration: none !important;
+  border-radius: 0.4rem;
+  padding: 0.1rem 0.5rem;
+}
+
+/* Footer social buttons: stronger gold fill + navy icon + crisp ring */
+footer a.hover\:bg-gold:hover {
+  background-color: var(--gold) !important;
+  color: var(--navy) !important;
+  text-decoration: none !important;
+  box-shadow:
+    0 0 0 3px var(--cream),
+    0 6px 16px -6px rgba(254, 221, 90, 0.6);
+}
+
+/* Back-to-characters link on navy: cream/70 -> solid gold pill */
+a.hover\:text-cream:hover {
+  background-color: var(--gold);
+  color: var(--navy) !important;
+  text-decoration: none !important;
+  border-radius: 0.5rem;
+  padding: 0.15rem 0.6rem;
+  margin-left: -0.6rem;
+}
+
+/* Accessibility toolbar options: faint gold/50 border -> solid gold-dark + cream-dark fill */
+button.hover\:border-gold\/50:hover,
+.hover\:border-gold\/50:hover {
+  border-color: var(--gold-dark) !important;
+  background-color: var(--cream-dark) !important;
+  text-decoration: none !important;
+}
+
+/* Toolbar toggles + close button: muted wash -> cream-dark + navy text + gold-dark border */
+button.hover\:bg-muted:hover,
+.hover\:bg-muted:hover {
+  background-color: var(--cream-dark) !important;
+  color: var(--navy) !important;
+  border-color: var(--gold-dark) !important;
+  text-decoration: none !important;
+}
+
+/* Toolbar trigger (gear): navy circle -> gold circle + navy icon */
+button.accessibility-toolbar:hover {
+  background-color: var(--gold) !important;
+  color: var(--navy) !important;
 }
 
 /* Full-width variant */

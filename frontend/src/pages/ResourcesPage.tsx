@@ -175,9 +175,9 @@ function DownloadSection({
       className={`px-4 py-16 scroll-mt-24 ${bgMuted ? "bg-muted" : "bg-background"}`}
     >
       <div className="mx-auto max-w-4xl">
-        <header className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-foreground">{title}</h2>
-          <p className="mt-2 text-muted-foreground">{description}</p>
+        <header className="mb-8">
+          <h2 className="text-center text-3xl font-bold text-foreground">{title}</h2>
+          <p className="mt-2 text-left text-muted-foreground">{description}</p>
         </header>
         <div className="space-y-4">
           {items.map((item, i) => (
@@ -245,9 +245,9 @@ export default function ResourcesPage() {
 
       <section id="videos" className="bg-background px-4 py-16 scroll-mt-24">
         <div className="mx-auto max-w-5xl">
-          <header className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground">Videos & Impact</h2>
-            <p className="mt-2 text-muted-foreground">Watch our work and see the impact.</p>
+          <header className="mb-8">
+            <h2 className="text-center text-3xl font-bold text-foreground">Videos & Impact</h2>
+            <p className="mt-2 text-left text-muted-foreground">Watch our work and see the impact.</p>
           </header>
           <div className="grid gap-8 md:grid-cols-2">
             {[1, 2, 3, 4].map((i) => (
@@ -267,9 +267,9 @@ export default function ResourcesPage() {
 
       <section id="news" className="bg-muted px-4 py-16 scroll-mt-24">
         <div className="mx-auto max-w-4xl">
-          <header className="mb-8 text-center">
-            <h2 className="text-3xl font-bold text-foreground">Bubble World News HQ</h2>
-            <p className="mt-2 text-muted-foreground">
+          <header className="mb-8">
+            <h2 className="text-center text-3xl font-bold text-foreground">Bubble World News HQ</h2>
+            <p className="mt-2 text-left text-muted-foreground">
               Stay connected with the latest from Buttons & Bubbles — news, stories and updates from
               across our community.
             </p>
