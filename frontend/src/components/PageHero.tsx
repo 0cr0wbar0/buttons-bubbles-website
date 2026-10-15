@@ -14,8 +14,8 @@ export function PageHero({ title, subtitle, children }: PageHeroProps) {
     <section className="relative overflow-hidden bg-navy px-4 py-16 text-center md:py-24">
       <FloatingBubbles />
       <div className="relative z-10 mx-auto max-w-3xl">
-        <h1 className="text-3xl font-extrabold text-gold md:text-5xl">{title}</h1>
-        {subtitle && <p className="mt-4 text-lg text-cream/90 md:text-xl">{subtitle}</p>}
+        <h1 className="text-center text-3xl font-extrabold text-gold md:text-5xl">{title}</h1>
+        {subtitle && <p className="mt-4 text-left text-lg text-cream/90 md:text-xl">{subtitle}</p>}
         {children}
       </div>
     </section>

@@ -69,9 +69,9 @@ export default function PoliciesPage() {
 
       <section id="policies" className="bg-background px-4 py-16 scroll-mt-24">
         <div className="mx-auto max-w-4xl">
-          <header className="text-center mb-10">
-            <h2 className="text-3xl font-bold text-foreground">Our Policies</h2>
-            <p className="mt-2 text-muted-foreground">
+          <header className="mb-10">
+            <h2 className="text-center text-3xl font-bold text-foreground">Our Policies</h2>
+            <p className="mt-2 text-left text-muted-foreground">
               Click on any policy below to view or download the full document.
             </p>
           </header>

@@ -55,9 +55,10 @@ export default function ServicesPage() {
         title="Welcome to Bubble World"
         subtitle="Placeholder text about our Bubble World concept and universe."
         background="background"
+        headerClassName="mx-auto max-w-4xl"
       >
-        <div className="max-w-4xl mx-auto text-center">
-          <p className="mt-4 text-foreground/90 leading-relaxed">
+        <div className="max-w-4xl mx-auto text-left">
+          <p className="mt-4 text-left text-foreground/90 leading-relaxed">
             Bubble World is our "automatically accessible" universe where barriers simply don't
             exist. It's the imaginative heart of everything we do. Home to our bespoke characters.
             Designed so everyone belongs by default, not as an afterthought.
@@ -82,8 +83,8 @@ export default function ServicesPage() {
           </div>
 
           <div className="mt-16" id="meet-the-characters">
-            <h3 className="text-2xl font-bold text-foreground">Meet the Characters</h3>
-            <p className="mt-2 text-muted-foreground">
+            <h3 className="text-left text-2xl font-bold text-foreground">Meet the Characters</h3>
+            <p className="mt-2 text-left text-muted-foreground">
               The heart of Bubble World — each character is unique, just like every bubble.
             </p>
             <div className="mt-8 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">

@@ -104,9 +104,9 @@ export default function ContactPage() {
 
       <section id="feedback" className="bg-muted px-4 py-16 scroll-mt-24">
         <div className="mx-auto max-w-2xl">
-          <header className="mb-8 text-center">
-            <h2 className="text-3xl font-bold text-foreground">Feedback Form</h2>
-            <p className="mt-2 text-muted-foreground">
+          <header className="mb-8">
+            <h2 className="text-center text-3xl font-bold text-foreground">Feedback Form</h2>
+            <p className="mt-2 text-left text-muted-foreground">
               We'd love to hear your thoughts, suggestions, and experiences. Your feedback helps us
               improve and grow.
             </p>

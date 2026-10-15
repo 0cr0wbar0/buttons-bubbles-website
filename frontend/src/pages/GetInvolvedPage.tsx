@@ -77,9 +77,9 @@ export default function GetInvolvedPage() {
       {/* Booking form */}
       <section id="booking" className="bg-background px-4 py-16 scroll-mt-24">
         <div className="mx-auto max-w-2xl">
-          <header className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground">Book a Session</h2>
-            <p className="mt-2 text-muted-foreground">Request a workshop, event or training.</p>
+          <header className="mb-8">
+            <h2 className="text-center text-3xl font-bold text-foreground">Book a Session</h2>
+            <p className="mt-2 text-left text-muted-foreground">Request a workshop, event or training.</p>
           </header>
           <form
             className="space-y-6 rounded-2xl border border-border bg-card p-8"
@@ -149,9 +149,9 @@ export default function GetInvolvedPage() {
       {/* Events listing */}
       <section id="events" className="bg-muted px-4 py-16 scroll-mt-24">
         <div className="mx-auto max-w-4xl">
-          <header className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground">Events</h2>
-            <p className="mt-2 text-muted-foreground">
+          <header className="mb-8">
+            <h2 className="text-center text-3xl font-bold text-foreground">Events</h2>
+            <p className="mt-2 text-left text-muted-foreground">
               Join us at upcoming workshops, community gatherings, and special events.
             </p>
           </header>
@@ -189,9 +189,9 @@ export default function GetInvolvedPage() {
       {/* Donation form */}
       <section id="donate" className="bg-background px-4 py-16 scroll-mt-24">
         <div className="mx-auto max-w-3xl">
-          <header className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground">Donate</h2>
-            <p className="mt-2 text-muted-foreground">Contribute to our cause. Every bit helps!</p>
+          <header className="mb-8">
+            <h2 className="text-center text-3xl font-bold text-foreground">Donate</h2>
+            <p className="mt-2 text-left text-muted-foreground">Contribute to our cause. Every bit helps!</p>
           </header>
           <form
             className="space-y-6 rounded-2xl border border-border bg-card p-8"
@@ -270,9 +270,9 @@ export default function GetInvolvedPage() {
       {/* Volunteer section */}
       <section id="volunteer" className="bg-muted px-4 py-16 scroll-mt-24">
         <div className="mx-auto max-w-4xl">
-          <header className="text-center mb-8">
-            <h2 className="text-3xl font-bold text-foreground">Volunteer With Us</h2>
-            <p className="mt-2 text-muted-foreground">
+          <header className="mb-8">
+            <h2 className="text-center text-3xl font-bold text-foreground">Volunteer With Us</h2>
+            <p className="mt-2 text-left text-muted-foreground">
               Join our community and help us make a difference.
             </p>
           </header>
@@ -341,8 +341,8 @@ export default function GetInvolvedPage() {
       <section id="members" className="bg-background px-4 py-16 scroll-mt-24">
         <div className="mx-auto grid gap-8 max-w-5xl md:grid-cols-2">
           <div className="rounded-2xl border border-border bg-card p-8">
-            <h2 className="text-2xl font-bold text-card-foreground text-center">Member Log In</h2>
-            <p className="mt-2 text-sm text-muted-foreground text-center">
+            <h2 className="text-left text-2xl font-bold text-card-foreground">Member Log In</h2>
+            <p className="mt-2 text-left text-sm text-muted-foreground">
               Placeholder. Access exclusive content and community features.
             </p>
             <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>
@@ -381,10 +381,10 @@ export default function GetInvolvedPage() {
             id="professionals"
             className="rounded-2xl border border-border bg-card p-8 scroll-mt-24"
           >
-            <h2 className="text-2xl font-bold text-card-foreground text-center">
+            <h2 className="text-left text-2xl font-bold text-card-foreground">
               Professionals Log In
             </h2>
-            <p className="mt-2 text-sm text-muted-foreground text-center">
+            <p className="mt-2 text-left text-sm text-muted-foreground">
               Placeholder. Access training materials, guides and resources.
             </p>
             <form className="mt-6 space-y-4" onSubmit={(e) => e.preventDefault()}>

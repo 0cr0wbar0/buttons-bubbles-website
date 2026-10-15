@@ -117,7 +117,7 @@ export function Footer() {
         <div className="mt-8 border-t border-navy-light pt-6 text-center text-xs text-cream/60">
           <p>
             &copy; {new Date().getFullYear()} Buttons & Bubbles CIC. All rights reserved. |{" "}
-            <Link to="/policies" className="underline hover:text-gold transition-colors">
+            <Link to="/policies" className="font-medium hover:text-gold transition-colors">
               Policies
             </Link>
           </p>
