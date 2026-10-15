@@ -187,7 +187,7 @@ export function AccessibilityToolbar() {
             />
             <ToggleRow
               label="Easy Reading Layout"
-              hint="Left-align subheadings and body text"
+              hint="Left-align titles and body text"
               checked={easyLayout}
               onChange={() => setEasyLayout(!easyLayout)}
             />
