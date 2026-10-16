@@ -872,3 +872,24 @@ html.font-size-xlarge {
 html.font-size-xxlarge {
   font-size: 140%;
 }
+
+/* Bubble World cards stay centered in easy reading mode.
+   The compact service picker buttons (Workshops, Activity Packs, ...) and the
+   Meet the Characters cards are visual cards — left-aligning their names
+   looks broken. Scoped to #bubble-world so all other pages keep the standard
+   left-aligned easy-reading titles.
+   Placed at the END of the file with html prefix (higher specificity) so it
+   always wins over the generic left-align rules above. */
+html.easy-reading-layout #bubble-world section button.text-center,
+html.easy-reading-layout #bubble-world button.text-center,
+html.easy-reading-layout #bubble-world section button.text-center h3,
+html.easy-reading-layout #bubble-world section button.text-center h3.text-card-foreground,
+html.easy-reading-layout #bubble-world button.text-center h3.text-card-foreground,
+html.easy-reading-layout #bubble-world section a.text-center,
+html.easy-reading-layout #bubble-world a.text-center,
+html.easy-reading-layout #bubble-world section a.text-center h3,
+html.easy-reading-layout #bubble-world a.text-center h3,
+html.easy-reading-layout #bubble-world section a.text-center p,
+html.easy-reading-layout #bubble-world a.text-center p {
+  text-align: center !important;
+}

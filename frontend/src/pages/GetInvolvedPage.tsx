@@ -277,7 +277,7 @@ export default function GetInvolvedPage() {
             </p>
           </header>
 
-          <div className="mb-10 max-w-3xl mx-auto rounded-2xl border border-border bg-card p-8">
+          <div className="mb-10 w-full rounded-2xl border border-border bg-card p-8">
             <h3 className="text-xl font-bold text-card-foreground">Our Approach to Volunteering</h3>
             <p className="mt-3 text-foreground/90 leading-relaxed">
               Placeholder text describing our approach to volunteering. We believe volunteering
