@@ -712,7 +712,7 @@ button.btn-block {
   --cream-dark: #f1eadc;
 }
 
-/* Easy reading layout — uniform width, left-aligned text (except buttons & character names) */
+/* Easy reading layout — uniform width, left-aligned text (buttons stay centered) */
 /* Exclude the accessibility toolbar from these styles */
 .easy-reading-layout section .mx-auto,
 .easy-reading-layout footer .mx-auto {
@@ -740,55 +740,69 @@ button.btn-block {
   text-align: left !important;
 }
 
-/* Keep buttons, character/team names under images centered */
-/* Made these selectors more specific to only target buttons within sections */
+/* Keep buttons centered — titles are always left-aligned (see rule below) */
 .easy-reading-layout section button,
 .easy-reading-layout section a.btn-primary,
 .easy-reading-layout section a.btn-secondary,
 .easy-reading-layout section .btn-primary,
 .easy-reading-layout section .btn-secondary,
-.easy-reading-layout section h3.text-center,
-.easy-reading-layout section .text-center,
-.easy-reading-layout section .mx-auto.text-center,
 .easy-reading-layout section .text-center button,
 .easy-reading-layout section .text-center a.btn-primary,
-.easy-reading-layout section .text-center a.btn-secondary,
-/* Team/character card: name and role after a circular avatar stay centered */
-/* Use adjacent sibling (+) for role (immediately after h3), not general sibling (~) which also hits bio */
-.easy-reading-layout section .mx-auto.rounded-full~h3,
-.easy-reading-layout section .mx-auto.rounded-full~h3+p,
+.easy-reading-layout section .text-center a.btn-secondary {
+  text-align: center !important;
+}
+
 /* Keep CTA paragraphs centered in easy reading mode — these are call-to-action sections with buttons */
 .easy-reading-layout section .text-center.mt-12 p {
   text-align: center !important;
 }
 
-/* Person card styles — name and role centered by default in easy reading mode */
-/* Bio is intentionally left-aligned for readability */
+/* All titles left-aligned in easy reading mode — overrides any text-center on headings */
+/* Placed last so it wins over any centered exceptions above. Excludes toolbar. */
+.easy-reading-layout section h1,
+.easy-reading-layout section h2,
+.easy-reading-layout section h3,
+.easy-reading-layout section h4,
+.easy-reading-layout section h5,
+.easy-reading-layout section h6,
+.easy-reading-layout section h1.text-center,
+.easy-reading-layout section h2.text-center,
+.easy-reading-layout section h3.text-center,
+.easy-reading-layout section h4.text-center,
+.easy-reading-layout section h5.text-center,
+.easy-reading-layout section h6.text-center,
+.easy-reading-layout section .text-center h1,
+.easy-reading-layout section .text-center h2,
+.easy-reading-layout section .text-center h3,
+.easy-reading-layout section .text-center h4,
+.easy-reading-layout section .text-center h5,
+.easy-reading-layout section .text-center h6,
+.easy-reading-layout section a.text-center h1,
+.easy-reading-layout section a.text-center h2,
+.easy-reading-layout section a.text-center h3,
+.easy-reading-layout section button h1,
+.easy-reading-layout section button h2,
+.easy-reading-layout section button h3,
+.easy-reading-layout section button h4,
+.easy-reading-layout section button.text-center h3.text-card-foreground,
 .easy-reading-layout section .person-card .person-name,
-.easy-reading-layout section .person-card .person-role {
-  text-align: center !important;
-}
-
-/* Keep service card (SimpleServiceCard) titles centered in easy reading mode */
-/* The h3 inside a text-center button (used in the quick-pick grid) should stay centered */
-.easy-reading-layout section button.text-center h3.text-card-foreground {
-  text-align: center !important;
-}
-
-/* Login form headings in Get Involved — left-aligned in easy reading mode */
+.easy-reading-layout section .person-card .person-role,
+.easy-reading-layout section h3.accreditation-title.text-center,
+.easy-reading-layout .relative.z-10 h1,
+.easy-reading-layout .relative.z-10 h1.text-center,
 .easy-reading-layout #members h2.text-center,
-.easy-reading-layout #members p.text-center {
-  text-align: left !important;
-}
-
-/* Accreditation title — left-aligned in easy reading mode for better readability */
-/* Only applies when heading has text-center class, so it's centered by default */
-.easy-reading-layout section h3.accreditation-title.text-center {
+.easy-reading-layout footer h1,
+.easy-reading-layout footer h2,
+.easy-reading-layout footer h3,
+.easy-reading-layout footer h4,
+.easy-reading-layout footer h5,
+.easy-reading-layout footer h6 {
   text-align: left !important;
 }
 
 /* Accreditation description paragraph — left-aligned in easy reading mode */
-.easy-reading-layout section h3.accreditation-title.text-center + p {
+.easy-reading-layout section h3.accreditation-title.text-center + p,
+.easy-reading-layout #members p.text-center {
   text-align: left !important;
 }
 
@@ -857,4 +871,25 @@ html.font-size-xlarge {
 
 html.font-size-xxlarge {
   font-size: 140%;
+}
+
+/* Bubble World cards stay centered in easy reading mode.
+   The compact service picker buttons (Workshops, Activity Packs, ...) and the
+   Meet the Characters cards are visual cards — left-aligning their names
+   looks broken. Scoped to #bubble-world so all other pages keep the standard
+   left-aligned easy-reading titles.
+   Placed at the END of the file with html prefix (higher specificity) so it
+   always wins over the generic left-align rules above. */
+html.easy-reading-layout #bubble-world section button.text-center,
+html.easy-reading-layout #bubble-world button.text-center,
+html.easy-reading-layout #bubble-world section button.text-center h3,
+html.easy-reading-layout #bubble-world section button.text-center h3.text-card-foreground,
+html.easy-reading-layout #bubble-world button.text-center h3.text-card-foreground,
+html.easy-reading-layout #bubble-world section a.text-center,
+html.easy-reading-layout #bubble-world a.text-center,
+html.easy-reading-layout #bubble-world section a.text-center h3,
+html.easy-reading-layout #bubble-world a.text-center h3,
+html.easy-reading-layout #bubble-world section a.text-center p,
+html.easy-reading-layout #bubble-world a.text-center p {
+  text-align: center !important;
 }
